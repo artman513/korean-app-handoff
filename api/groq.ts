@@ -232,13 +232,18 @@ export default async function handler(
       res.status(err.status).json({ error: err.message });
       return;
     }
-    // Groq のレート制限など上流エラーのステータスを引き継ぐ
-    const status =
-      typeof err === 'object' && err && 'status' in err
-        ? (err as { status?: number }).status
-        : undefined;
-    res.status(status === 429 ? 429 : 502).json({
-      error: status === 429 ? 'Rate limited upstream' : 'Upstream error',
+    // Groq のレート制限など上流エラーのステータス・詳細を引き継ぐ（APIキーは含めない）
+    const e = err as {
+      status?: number;
+      message?: string;
+      error?: { message?: string };
+    };
+    const upstreamStatus = e?.status;
+    const detail = e?.error?.message ?? e?.message ?? 'unknown';
+    res.status(upstreamStatus === 429 ? 429 : 502).json({
+      error: upstreamStatus === 429 ? 'Rate limited upstream' : 'Upstream error',
+      upstreamStatus,
+      detail,
     });
   }
 }
