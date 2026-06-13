@@ -232,7 +232,8 @@ export default async function handler(
       res.status(err.status).json({ error: err.message });
       return;
     }
-    // Groq のレート制限など上流エラーのステータス・詳細を引き継ぐ（APIキーは含めない）
+    // 詳細はサーバーログにのみ出す（上流エラー文にAPIキー等の秘密が含まれ得るため
+    // レスポンスボディには載せない）。クライアントには汎用メッセージのみ返す。
     const e = err as {
       status?: number;
       message?: string;
@@ -240,10 +241,10 @@ export default async function handler(
     };
     const upstreamStatus = e?.status;
     const detail = e?.error?.message ?? e?.message ?? 'unknown';
+    console.error('[api/groq] upstream error', { task: body.task, upstreamStatus, detail });
     res.status(upstreamStatus === 429 ? 429 : 502).json({
       error: upstreamStatus === 429 ? 'Rate limited upstream' : 'Upstream error',
       upstreamStatus,
-      detail,
     });
   }
 }
