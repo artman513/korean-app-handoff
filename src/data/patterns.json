@@ -1,0 +1,69 @@
+{
+  "_comment": "パズル学習の文型（骨組み）。templateの{verb}に動詞カードがドロップされ、verbs.jsonのforms[patternId]と一致するか判定する。",
+  "patterns": [
+    {
+      "id": "want_to",
+      "label": "〜고 싶어요",
+      "meaning": "〜したいです",
+      "template": "{verb}고 싶어요",
+      "example": "가고 싶어요",
+      "level": 1
+    },
+    {
+      "id": "present",
+      "label": "〜아요/어요",
+      "meaning": "〜します（丁寧）",
+      "template": "{verb}",
+      "example": "가요",
+      "level": 1
+    },
+    {
+      "id": "past",
+      "label": "〜았어요/었어요",
+      "meaning": "〜しました",
+      "template": "{verb}",
+      "example": "갔어요",
+      "level": 2
+    },
+    {
+      "id": "must",
+      "label": "〜아야/어야 돼요",
+      "meaning": "〜しなければなりません",
+      "template": "{verb} 돼요",
+      "example": "가야 돼요",
+      "level": 2
+    },
+    {
+      "id": "progressive",
+      "label": "〜고 있어요",
+      "meaning": "〜しています",
+      "template": "{verb}고 있어요",
+      "example": "가고 있어요",
+      "level": 1
+    },
+    {
+      "id": "can",
+      "label": "〜(으)ㄹ 수 있어요",
+      "meaning": "〜できます",
+      "template": "{verb} 수 있어요",
+      "example": "갈 수 있어요",
+      "level": 2
+    },
+    {
+      "id": "future",
+      "label": "〜(으)ㄹ 거예요",
+      "meaning": "〜するつもりです",
+      "template": "{verb} 거예요",
+      "example": "갈 거예요",
+      "level": 2
+    },
+    {
+      "id": "negation",
+      "label": "안 〜아요/어요",
+      "meaning": "〜しません",
+      "template": "안 {verb}",
+      "example": "안 가요",
+      "level": 1
+    }
+  ]
+}

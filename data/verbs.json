@@ -1,0 +1,125 @@
+{
+  "_comment": "パズル学習の動詞カード。forms[patternId]は完成文の正解（フル文字列）。判定はこの文字列との完全一致で行う。活用形は手作業で検証済み。v1は規則的な動詞を中心に厳選。",
+  "verbs": [
+    {
+      "id": "gada", "dict": "가다", "meaning": "行く", "stemType": "vowel",
+      "forms": {
+        "want_to": "가고 싶어요", "present": "가요", "past": "갔어요",
+        "must": "가야 돼요", "progressive": "가고 있어요",
+        "can": "갈 수 있어요", "future": "갈 거예요", "negation": "안 가요"
+      }
+    },
+    {
+      "id": "oda", "dict": "오다", "meaning": "来る", "stemType": "vowel",
+      "forms": {
+        "want_to": "오고 싶어요", "present": "와요", "past": "왔어요",
+        "must": "와야 돼요", "progressive": "오고 있어요",
+        "can": "올 수 있어요", "future": "올 거예요", "negation": "안 와요"
+      }
+    },
+    {
+      "id": "meokda", "dict": "먹다", "meaning": "食べる", "stemType": "consonant",
+      "forms": {
+        "want_to": "먹고 싶어요", "present": "먹어요", "past": "먹었어요",
+        "must": "먹어야 돼요", "progressive": "먹고 있어요",
+        "can": "먹을 수 있어요", "future": "먹을 거예요", "negation": "안 먹어요"
+      }
+    },
+    {
+      "id": "masida", "dict": "마시다", "meaning": "飲む", "stemType": "vowel",
+      "forms": {
+        "want_to": "마시고 싶어요", "present": "마셔요", "past": "마셨어요",
+        "must": "마셔야 돼요", "progressive": "마시고 있어요",
+        "can": "마실 수 있어요", "future": "마실 거예요", "negation": "안 마셔요"
+      }
+    },
+    {
+      "id": "boda", "dict": "보다", "meaning": "見る", "stemType": "vowel",
+      "forms": {
+        "want_to": "보고 싶어요", "present": "봐요", "past": "봤어요",
+        "must": "봐야 돼요", "progressive": "보고 있어요",
+        "can": "볼 수 있어요", "future": "볼 거예요", "negation": "안 봐요"
+      }
+    },
+    {
+      "id": "sada", "dict": "사다", "meaning": "買う", "stemType": "vowel",
+      "forms": {
+        "want_to": "사고 싶어요", "present": "사요", "past": "샀어요",
+        "must": "사야 돼요", "progressive": "사고 있어요",
+        "can": "살 수 있어요", "future": "살 거예요", "negation": "안 사요"
+      }
+    },
+    {
+      "id": "hada", "dict": "하다", "meaning": "する", "stemType": "hada",
+      "forms": {
+        "want_to": "하고 싶어요", "present": "해요", "past": "했어요",
+        "must": "해야 돼요", "progressive": "하고 있어요",
+        "can": "할 수 있어요", "future": "할 거예요", "negation": "안 해요"
+      }
+    },
+    {
+      "id": "jada", "dict": "자다", "meaning": "寝る", "stemType": "vowel",
+      "forms": {
+        "want_to": "자고 싶어요", "present": "자요", "past": "잤어요",
+        "must": "자야 돼요", "progressive": "자고 있어요",
+        "can": "잘 수 있어요", "future": "잘 거예요", "negation": "안 자요"
+      }
+    },
+    {
+      "id": "ikda", "dict": "읽다", "meaning": "読む", "stemType": "consonant",
+      "forms": {
+        "want_to": "읽고 싶어요", "present": "읽어요", "past": "읽었어요",
+        "must": "읽어야 돼요", "progressive": "읽고 있어요",
+        "can": "읽을 수 있어요", "future": "읽을 거예요", "negation": "안 읽어요"
+      }
+    },
+    {
+      "id": "mannada", "dict": "만나다", "meaning": "会う", "stemType": "vowel",
+      "forms": {
+        "want_to": "만나고 싶어요", "present": "만나요", "past": "만났어요",
+        "must": "만나야 돼요", "progressive": "만나고 있어요",
+        "can": "만날 수 있어요", "future": "만날 거예요", "negation": "안 만나요"
+      }
+    },
+    {
+      "id": "gidarida", "dict": "기다리다", "meaning": "待つ", "stemType": "vowel",
+      "forms": {
+        "want_to": "기다리고 싶어요", "present": "기다려요", "past": "기다렸어요",
+        "must": "기다려야 돼요", "progressive": "기다리고 있어요",
+        "can": "기다릴 수 있어요", "future": "기다릴 거예요", "negation": "안 기다려요"
+      }
+    },
+    {
+      "id": "ipda", "dict": "입다", "meaning": "着る", "stemType": "consonant",
+      "forms": {
+        "want_to": "입고 싶어요", "present": "입어요", "past": "입었어요",
+        "must": "입어야 돼요", "progressive": "입고 있어요",
+        "can": "입을 수 있어요", "future": "입을 거예요", "negation": "안 입어요"
+      }
+    },
+    {
+      "id": "jjikda", "dict": "찍다", "meaning": "撮る", "stemType": "consonant",
+      "forms": {
+        "want_to": "찍고 싶어요", "present": "찍어요", "past": "찍었어요",
+        "must": "찍어야 돼요", "progressive": "찍고 있어요",
+        "can": "찍을 수 있어요", "future": "찍을 거예요", "negation": "안 찍어요"
+      }
+    },
+    {
+      "id": "baeuda", "dict": "배우다", "meaning": "習う", "stemType": "vowel",
+      "forms": {
+        "want_to": "배우고 싶어요", "present": "배워요", "past": "배웠어요",
+        "must": "배워야 돼요", "progressive": "배우고 있어요",
+        "can": "배울 수 있어요", "future": "배울 거예요", "negation": "안 배워요"
+      }
+    },
+    {
+      "id": "salda", "dict": "살다", "meaning": "住む", "stemType": "rieul",
+      "forms": {
+        "want_to": "살고 싶어요", "present": "살아요", "past": "살았어요",
+        "must": "살아야 돼요", "progressive": "살고 있어요",
+        "can": "살 수 있어요", "future": "살 거예요", "negation": "안 살아요"
+      }
+    }
+  ]
+}

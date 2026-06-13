@@ -1,0 +1,70 @@
+{
+  "_comment": "フレーズ音読・発音チェック用。推し活文脈を主役にした50フレーズ。各フレーズは ko(韓国語)/ja(意味)/romaja(ローマ字)/category/level(1-3) を持つ。",
+  "categories": [
+    { "id": "cheer",    "label": "応援・気持ち",        "emoji": "💖" },
+    { "id": "concert",  "label": "コンサート現場",      "emoji": "🎤" },
+    { "id": "goods",    "label": "グッズ購入",          "emoji": "🛍️" },
+    { "id": "fansign",  "label": "ファンサイン/영통팬싸", "emoji": "📹" },
+    { "id": "sns",      "label": "SNS・コメント",        "emoji": "💬" },
+    { "id": "local",    "label": "現地サバイバル",      "emoji": "🧳" },
+    { "id": "greeting", "label": "あいさつ",            "emoji": "🙌" }
+  ],
+  "phrases": [
+    { "id": "cheer_01", "category": "cheer", "ko": "사랑해요", "ja": "愛してます", "romaja": "saranghaeyo", "level": 1 },
+    { "id": "cheer_02", "category": "cheer", "ko": "너무 멋있어요", "ja": "すごくかっこいい", "romaja": "neomu meosisseoyo", "level": 1 },
+    { "id": "cheer_03", "category": "cheer", "ko": "최고예요", "ja": "最高です", "romaja": "choegoyeyo", "level": 1 },
+    { "id": "cheer_04", "category": "cheer", "ko": "진짜 예뻐요", "ja": "本当にかわいい・きれい", "romaja": "jinjja yeppeoyo", "level": 1 },
+    { "id": "cheer_05", "category": "cheer", "ko": "노래 너무 좋아요", "ja": "歌が大好きです", "romaja": "norae neomu joayo", "level": 1 },
+    { "id": "cheer_06", "category": "cheer", "ko": "응원할게요", "ja": "応援します", "romaja": "eungwonhalgeyo", "level": 2 },
+    { "id": "cheer_07", "category": "cheer", "ko": "항상 응원해요", "ja": "いつも応援してます", "romaja": "hangsang eungwonhaeyo", "level": 2 },
+    { "id": "cheer_08", "category": "cheer", "ko": "보고 싶었어요", "ja": "会いたかったです", "romaja": "bogo sipeosseoyo", "level": 2 },
+    { "id": "cheer_09", "category": "cheer", "ko": "무대 최고였어요", "ja": "ステージ最高でした", "romaja": "mudae choegoyeosseoyo", "level": 2 },
+    { "id": "cheer_10", "category": "cheer", "ko": "덕분에 행복해요", "ja": "おかげで幸せです", "romaja": "deokbune haengbokhaeyo", "level": 2 },
+    { "id": "cheer_11", "category": "cheer", "ko": "늘 건강하세요", "ja": "いつも元気でいてね", "romaja": "neul geonganghaseyo", "level": 2 },
+    { "id": "cheer_12", "category": "cheer", "ko": "평생 응원할게요", "ja": "一生応援します", "romaja": "pyeongsaeng eungwonhalgeyo", "level": 3 },
+
+    { "id": "concert_01", "category": "concert", "ko": "콘서트 가고 싶어요", "ja": "コンサート行きたい", "romaja": "konseoteu gago sipeoyo", "level": 1 },
+    { "id": "concert_02", "category": "concert", "ko": "앵콜!", "ja": "アンコール！", "romaja": "aengkol", "level": 1 },
+    { "id": "concert_03", "category": "concert", "ko": "콘서트 언제예요?", "ja": "コンサートいつですか？", "romaja": "konseoteu eonjeyeyo", "level": 1 },
+    { "id": "concert_04", "category": "concert", "ko": "여기 봐주세요", "ja": "こっち見てください", "romaja": "yeogi bwajuseyo", "level": 2 },
+    { "id": "concert_05", "category": "concert", "ko": "너무 가까워요!", "ja": "すごく近い！", "romaja": "neomu gakkawoyo", "level": 2 },
+    { "id": "concert_06", "category": "concert", "ko": "자리가 어디예요?", "ja": "席はどこですか？", "romaja": "jariga eodiyeyo", "level": 2 },
+    { "id": "concert_07", "category": "concert", "ko": "응원봉 챙겼어요", "ja": "ペンライト持ってきた", "romaja": "eungwonbong chaenggyeosseoyo", "level": 3 },
+    { "id": "concert_08", "category": "concert", "ko": "같이 떼창해요", "ja": "一緒に大合唱しよう", "romaja": "gachi ttechanghaeyo", "level": 3 },
+
+    { "id": "goods_01", "category": "goods", "ko": "이거 주세요", "ja": "これください", "romaja": "igeo juseyo", "level": 1 },
+    { "id": "goods_02", "category": "goods", "ko": "얼마예요?", "ja": "いくらですか？", "romaja": "eolmayeyo", "level": 1 },
+    { "id": "goods_03", "category": "goods", "ko": "봉투 주세요", "ja": "袋ください", "romaja": "bongtu juseyo", "level": 1 },
+    { "id": "goods_04", "category": "goods", "ko": "포카 있어요?", "ja": "フォトカードありますか？", "romaja": "poka isseoyo", "level": 2 },
+    { "id": "goods_05", "category": "goods", "ko": "이거 두 개 주세요", "ja": "これ2つください", "romaja": "igeo du gae juseyo", "level": 2 },
+    { "id": "goods_06", "category": "goods", "ko": "응원봉 사고 싶어요", "ja": "ペンライト買いたい", "romaja": "eungwonbong sago sipeoyo", "level": 2 },
+    { "id": "goods_07", "category": "goods", "ko": "카드로 계산할게요", "ja": "カードで払います", "romaja": "kadeuro gyesanhalgeyo", "level": 2 },
+    { "id": "goods_08", "category": "goods", "ko": "품절이에요?", "ja": "売り切れですか？", "romaja": "pumjeorieyo", "level": 3 },
+
+    { "id": "fansign_01", "category": "fansign", "ko": "일본에서 왔어요", "ja": "日本から来ました", "romaja": "ilboneseo wasseoyo", "level": 1 },
+    { "id": "fansign_02", "category": "fansign", "ko": "만나서 반가워요", "ja": "会えて嬉しいです", "romaja": "mannaseo bangawoyo", "level": 1 },
+    { "id": "fansign_03", "category": "fansign", "ko": "진짜 팬이에요", "ja": "本当にファンです", "romaja": "jinjja paenieyo", "level": 1 },
+    { "id": "fansign_04", "category": "fansign", "ko": "또 올게요", "ja": "また来ます", "romaja": "tto olgeyo", "level": 1 },
+    { "id": "fansign_05", "category": "fansign", "ko": "손 하트 해주세요", "ja": "指ハートしてください", "romaja": "son hateu haejuseyo", "level": 2 },
+    { "id": "fansign_06", "category": "fansign", "ko": "너무 떨려요", "ja": "すごく緊張します", "romaja": "neomu tteollyeoyo", "level": 2 },
+
+    { "id": "sns_01", "category": "sns", "ko": "컴백 언제예요?", "ja": "カムバックいつですか？", "romaja": "keombaek eonjeyeyo", "level": 1 },
+    { "id": "sns_02", "category": "sns", "ko": "영상 잘 봤어요", "ja": "動画ちゃんと見ました", "romaja": "yeongsang jal bwasseoyo", "level": 2 },
+    { "id": "sns_03", "category": "sns", "ko": "잘 보고 있어요", "ja": "ちゃんと見てます", "romaja": "jal bogo isseoyo", "level": 2 },
+    { "id": "sns_04", "category": "sns", "ko": "오늘도 최애 천재", "ja": "今日も推しは天才", "romaja": "oneuldo choeae cheonjae", "level": 2 },
+    { "id": "sns_05", "category": "sns", "ko": "다음 앨범 기대돼요", "ja": "次のアルバム楽しみです", "romaja": "daeum aelbeom gidaedwaeyo", "level": 3 },
+    { "id": "sns_06", "category": "sns", "ko": "떡밥 주세요", "ja": "新しいコンテンツちょうだい（ファン用語）", "romaja": "tteokbap juseyo", "level": 3 },
+
+    { "id": "local_01", "category": "local", "ko": "안녕히 계세요", "ja": "さようなら（その場に残る人へ）", "romaja": "annyeonghi gyeseyo", "level": 1 },
+    { "id": "local_02", "category": "local", "ko": "아메리카노 주세요", "ja": "アメリカーノください", "romaja": "amerikano juseyo", "level": 1 },
+    { "id": "local_03", "category": "local", "ko": "이거 맛있어요", "ja": "これおいしい", "romaja": "igeo masisseoyo", "level": 1 },
+    { "id": "local_04", "category": "local", "ko": "화장실 어디예요?", "ja": "トイレはどこですか？", "romaja": "hwajangsil eodiyeyo", "level": 2 },
+    { "id": "local_05", "category": "local", "ko": "사진 찍어도 돼요?", "ja": "写真撮ってもいいですか？", "romaja": "sajin jjigeodo dwaeyo", "level": 2 },
+    { "id": "local_06", "category": "local", "ko": "여기 어떻게 가요?", "ja": "ここへどう行きますか？", "romaja": "yeogi eotteoke gayo", "level": 2 },
+
+    { "id": "greeting_01", "category": "greeting", "ko": "안녕하세요", "ja": "こんにちは", "romaja": "annyeonghaseyo", "level": 1 },
+    { "id": "greeting_02", "category": "greeting", "ko": "감사합니다", "ja": "ありがとうございます", "romaja": "gamsahamnida", "level": 1 },
+    { "id": "greeting_03", "category": "greeting", "ko": "괜찮아요", "ja": "大丈夫です", "romaja": "gwaenchanayo", "level": 1 },
+    { "id": "greeting_04", "category": "greeting", "ko": "죄송해요", "ja": "すみません", "romaja": "joesonghaeyo", "level": 1 }
+  ]
+}

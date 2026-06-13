@@ -1,0 +1,125 @@
+{
+  "_comment": "ハングル学習（F-01）用データ。基本子音14＋基本母音10＝24字。typeで자음/모음タブを切替。mouthHintは初心者向けの口の形・出し方ヒント。exampleWordは推し活・日常で馴染みのある単語を優先。",
+  "hangul": [
+    {
+      "id": "giyeok", "char": "ㄱ", "romaja": "g / k", "type": "consonant",
+      "mouthHint": "舌の奥を上あごにつけて「カ」と「ガ」の間の音。語頭ではカ行に近い",
+      "exampleWord": "가방", "exampleMeaning": "かばん"
+    },
+    {
+      "id": "nieun", "char": "ㄴ", "romaja": "n", "type": "consonant",
+      "mouthHint": "舌先を上の歯ぐきにつけて「ナ」行の音",
+      "exampleWord": "노래", "exampleMeaning": "歌"
+    },
+    {
+      "id": "digeut", "char": "ㄷ", "romaja": "d / t", "type": "consonant",
+      "mouthHint": "舌先を上の歯ぐきにつけて「タ」と「ダ」の間の音",
+      "exampleWord": "대박", "exampleMeaning": "すごい・大当たり"
+    },
+    {
+      "id": "rieul", "char": "ㄹ", "romaja": "r / l", "type": "consonant",
+      "mouthHint": "舌先で上あごを軽くはじく。日本語のラ行より舌を軽く",
+      "exampleWord": "라면", "exampleMeaning": "ラーメン"
+    },
+    {
+      "id": "mieum", "char": "ㅁ", "romaja": "m", "type": "consonant",
+      "mouthHint": "唇を閉じてから開く「マ」行の音",
+      "exampleWord": "멋있어", "exampleMeaning": "かっこいい"
+    },
+    {
+      "id": "bieup", "char": "ㅂ", "romaja": "b / p", "type": "consonant",
+      "mouthHint": "唇を閉じてから破裂させる。「パ」と「バ」の間の音",
+      "exampleWord": "바다", "exampleMeaning": "海"
+    },
+    {
+      "id": "siot", "char": "ㅅ", "romaja": "s", "type": "consonant",
+      "mouthHint": "「サ」行の音。息を軽く出す",
+      "exampleWord": "사랑", "exampleMeaning": "愛"
+    },
+    {
+      "id": "ieung", "char": "ㅇ", "romaja": "ng / 無音", "type": "consonant",
+      "mouthHint": "語頭では音なし（母音をそのまま読む）。パッチムでは「ン（ング）」",
+      "exampleWord": "오빠", "exampleMeaning": "お兄さん（年上男性への呼びかけ）"
+    },
+    {
+      "id": "jieut", "char": "ㅈ", "romaja": "j", "type": "consonant",
+      "mouthHint": "「チャ」と「ジャ」の間の音。舌を上あごに近づけて",
+      "exampleWord": "진짜", "exampleMeaning": "本当に・マジで"
+    },
+    {
+      "id": "chieut", "char": "ㅊ", "romaja": "ch", "type": "consonant",
+      "mouthHint": "ㅈより息を強く出す「チャ」行。手のひらに息がかかるくらい",
+      "exampleWord": "최고", "exampleMeaning": "最高"
+    },
+    {
+      "id": "kieuk", "char": "ㅋ", "romaja": "k", "type": "consonant",
+      "mouthHint": "ㄱより息を強く出す「カ」行。笑い声の「ㅋㅋㅋ」はこれ",
+      "exampleWord": "케이크", "exampleMeaning": "ケーキ"
+    },
+    {
+      "id": "tieut", "char": "ㅌ", "romaja": "t", "type": "consonant",
+      "mouthHint": "ㄷより息を強く出す「タ」行",
+      "exampleWord": "토끼", "exampleMeaning": "うさぎ"
+    },
+    {
+      "id": "pieup", "char": "ㅍ", "romaja": "p", "type": "consonant",
+      "mouthHint": "ㅂより息を強く出す「パ」行",
+      "exampleWord": "포카", "exampleMeaning": "フォトカード（トレカ）"
+    },
+    {
+      "id": "hieut", "char": "ㅎ", "romaja": "h", "type": "consonant",
+      "mouthHint": "「ハ」行の音。のどから息を出す",
+      "exampleWord": "하트", "exampleMeaning": "ハート"
+    },
+    {
+      "id": "a", "char": "ㅏ", "romaja": "a", "type": "vowel",
+      "mouthHint": "口を大きく開けて「ア」",
+      "exampleWord": "아이돌", "exampleMeaning": "アイドル"
+    },
+    {
+      "id": "ya", "char": "ㅑ", "romaja": "ya", "type": "vowel",
+      "mouthHint": "口を大きく開けて「ヤ」",
+      "exampleWord": "야!", "exampleMeaning": "おい！・ねえ！"
+    },
+    {
+      "id": "eo", "char": "ㅓ", "romaja": "eo", "type": "vowel",
+      "mouthHint": "「オ」より口を縦に大きく開けてあいまいに。日本語にない音",
+      "exampleWord": "언니", "exampleMeaning": "お姉さん（女性から年上女性へ）"
+    },
+    {
+      "id": "yeo", "char": "ㅕ", "romaja": "yeo", "type": "vowel",
+      "mouthHint": "口を縦に開けて「ヨ」。ㅓにyがついた音",
+      "exampleWord": "여기", "exampleMeaning": "ここ"
+    },
+    {
+      "id": "o", "char": "ㅗ", "romaja": "o", "type": "vowel",
+      "mouthHint": "唇を丸くすぼめて「オ」",
+      "exampleWord": "오늘", "exampleMeaning": "今日"
+    },
+    {
+      "id": "yo", "char": "ㅛ", "romaja": "yo", "type": "vowel",
+      "mouthHint": "唇を丸くすぼめて「ヨ」",
+      "exampleWord": "요즘", "exampleMeaning": "最近"
+    },
+    {
+      "id": "u", "char": "ㅜ", "romaja": "u", "type": "vowel",
+      "mouthHint": "唇をしっかり丸く突き出して「ウ」",
+      "exampleWord": "우리", "exampleMeaning": "私たち"
+    },
+    {
+      "id": "yu", "char": "ㅠ", "romaja": "yu", "type": "vowel",
+      "mouthHint": "唇を突き出して「ユ」。泣き顔の「ㅠㅠ」はこれ",
+      "exampleWord": "유명해", "exampleMeaning": "有名だ"
+    },
+    {
+      "id": "eu", "char": "ㅡ", "romaja": "eu", "type": "vowel",
+      "mouthHint": "口を横に引いて「ウ」。唇を丸めないのがポイント。日本語にない音",
+      "exampleWord": "그냥", "exampleMeaning": "ただ・なんとなく"
+    },
+    {
+      "id": "i", "char": "ㅣ", "romaja": "i", "type": "vowel",
+      "mouthHint": "口を横に引いて「イ」",
+      "exampleWord": "이거", "exampleMeaning": "これ"
+    }
+  ]
+}

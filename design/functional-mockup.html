@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한국어 Study — ファンクショナルモックアップ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --acc: #E83E8C;       /* accent: will be replaced with final design color */
+  --acc2: #F06292;
+  --bg: #F7F8FA;
+  --card: #FFFFFF;
+  --border: #E8ECF0;
+  --text: #1A1A2E;
+  --text2: #6B7280;
+  --text3: #9CA3AF;
+  --nav: #FFFFFF;
+  --nav-border: #F0F0F0;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #E8ECF2;
+  padding: 40px 24px 80px;
+  color: var(--text);
+}
+
+.page-header { text-align: center; margin-bottom: 36px; }
+.page-header h1 { font-size: 22px; font-weight: 700; color: var(--text); }
+.page-header p  { font-size: 13px; color: var(--text2); margin-top: 6px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  gap: 36px;
+  justify-content: center;
+}
+
+/* ─── PHONE ─── */
+.phone {
+  width: 300px;
+  background: #E0E4EA;
+  border-radius: 44px;
+  padding: 6px;
+  box-shadow: 0 20px 48px -16px rgba(0,0,0,.28), 0 0 0 1px rgba(255,255,255,.7);
+}
+.screen {
+  background: var(--bg);
+  border-radius: 38px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  position: relative;
+}
+.screen-label {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+}
+.screen-label span {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text2);
+  margin-top: 2px;
+}
+
+/* status bar */
+.sb {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 18px 6px;
+  font-size: 12px; font-weight: 700; color: var(--text);
+  flex: 0 0 auto;
+}
+.sb .icons { display: flex; gap: 5px; font-size: 11px; color: var(--text2); }
+
+/* header bar */
+.hbar {
+  display: flex; align-items: center;
+  padding: 8px 16px 10px;
+  flex: 0 0 auto;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+}
+.hbar .back { font-size: 18px; color: var(--text2); margin-right: 8px; cursor: pointer; }
+.hbar .title { font-weight: 700; font-size: 16px; flex: 1; }
+.hbar .right { color: var(--text2); font-size: 13px; }
+
+/* body */
+.body { flex: 1; overflow: hidden; padding: 14px; display: flex; flex-direction: column; gap: 12px; }
+
+/* card */
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+
+/* primary button */
+.btn {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  border-radius: 12px; padding: 12px; font-weight: 700; font-size: 14px;
+  border: none; cursor: pointer;
+}
+.btn-primary { background: var(--acc); color: #fff; box-shadow: 0 4px 12px rgba(232,62,140,.3); }
+.btn-outline  { background: transparent; color: var(--acc); border: 1.5px solid var(--acc); }
+.btn-ghost    { background: var(--bg); color: var(--text); border: 1.5px solid var(--border); }
+
+/* nav */
+.nav {
+  display: flex; justify-content: space-around;
+  padding: 8px 4px 14px;
+  background: var(--nav);
+  border-top: 1px solid var(--nav-border);
+  flex: 0 0 auto;
+}
+.nav div { text-align: center; font-size: 9.5px; color: var(--text3); font-weight: 500; }
+.nav div .ni { font-size: 18px; display: block; margin-bottom: 2px; }
+.nav .on { color: var(--acc); }
+
+/* tags / badges */
+.badge {
+  display: inline-flex; align-items: center;
+  border-radius: 99px; padding: 2px 8px;
+  font-size: 10px; font-weight: 700;
+}
+.badge-acc  { background: rgba(232,62,140,.12); color: var(--acc); }
+.badge-gray { background: var(--bg); color: var(--text2); border: 1px solid var(--border); }
+.badge-green { background: #ECFDF5; color: #059669; }
+
+/* tabs */
+.tabs {
+  display: flex; background: var(--bg); border-radius: 10px; padding: 3px;
+  border: 1px solid var(--border);
+}
+.tab {
+  flex: 1; text-align: center; padding: 7px 4px; border-radius: 8px;
+  font-size: 11.5px; font-weight: 700; color: var(--text2);
+}
+.tab.on { background: var(--card); color: var(--acc); box-shadow: 0 1px 4px rgba(0,0,0,.1); }
+
+/* progress bar */
+.pbar-wrap { background: var(--bg); border-radius: 99px; height: 8px; overflow: hidden; border: 1px solid var(--border); }
+.pbar-fill  { height: 100%; border-radius: 99px; background: var(--acc); }
+
+/* Korean font */
+.ko { font-family: 'Noto Sans KR', sans-serif; }
+.ko-big { font-family: 'Jua'; }
+
+/* ──── SCREEN-SPECIFIC ──── */
+
+/* HOME */
+.dday-card { background: linear-gradient(135deg, var(--acc), var(--acc2)); border-radius: 16px; padding: 14px; color: #fff; display: flex; align-items: center; gap: 12px; }
+.dday-card .num { font-size: 34px; font-weight: 900; line-height: 1; }
+.dday-card .label { font-size: 11px; opacity: .9; }
+.dday-card .artist { font-size: 14px; font-weight: 700; margin-top: 2px; }
+.menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.menu-tile {
+  background: var(--card); border-radius: 16px; padding: 14px; border: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 6px; box-shadow: 0 2px 8px rgba(0,0,0,.05);
+  transition: transform .15s;
+}
+.menu-tile .ico { font-size: 24px; }
+.menu-tile .mn  { font-weight: 700; font-size: 13.5px; }
+.menu-tile .mj  { font-size: 10px; color: var(--text2); }
+.today-card { display: flex; align-items: center; justify-content: space-between; }
+.today-card .ko-big { font-size: 18px; color: var(--text); }
+.today-card .ja  { font-size: 11px; color: var(--text2); margin-top: 2px; }
+.today-card .btn-play { width: 36px; height: 36px; border-radius: 50%; background: var(--acc); color: #fff; display: grid; place-items: center; font-size: 14px; border: none; box-shadow: 0 3px 8px rgba(232,62,140,.4); }
+
+/* HANGUL GRID */
+.hgrid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; }
+.hcell { aspect-ratio: 1; background: var(--card); border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid var(--border); box-shadow: 0 1px 4px rgba(0,0,0,.05); }
+.hcell .ch { font-family: 'Jua'; font-size: 22px; color: var(--text); }
+.hcell .ro { font-size: 9px; color: var(--text2); font-weight: 700; }
+.hcell.done { border-color: var(--acc); background: rgba(232,62,140,.05); }
+.hcell.done .ch { color: var(--acc); }
+
+/* HANGUL DETAIL */
+.hdetail-char { text-align: center; background: var(--card); border-radius: 16px; padding: 20px; border: 1px solid var(--border); }
+.hdetail-char .big { font-family: 'Jua'; font-size: 72px; color: var(--text); line-height: 1; }
+.hdetail-char .rom { font-size: 22px; font-weight: 700; color: var(--acc); margin-top: 4px; }
+.hint-row { display: flex; gap: 8px; align-items: stretch; }
+.hint-box { flex: 1; background: var(--card); border-radius: 12px; padding: 12px; border: 1px solid var(--border); font-size: 11.5px; color: var(--text2); line-height: 1.6; }
+.example-row { display: flex; gap: 8px; }
+.ex-card { flex: 1; background: var(--card); border-radius: 12px; padding: 11px; border: 1px solid var(--border); text-align: center; }
+.ex-card .kw { font-family: 'Jua'; font-size: 18px; }
+.ex-card .jw { font-size: 10px; color: var(--text2); margin-top: 3px; }
+
+/* PHRASE LIST */
+.phrase-list { display: flex; flex-direction: column; gap: 8px; overflow: hidden; }
+.phrase-row {
+  background: var(--card); border-radius: 14px; padding: 12px; border: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px;
+}
+.phrase-row .pk { flex: 1; }
+.phrase-row .pko { font-family: 'Noto Sans KR'; font-size: 15px; font-weight: 700; }
+.phrase-row .pja { font-size: 10px; color: var(--text2); margin-top: 2px; }
+.phrase-row .arrow { color: var(--text3); font-size: 16px; }
+
+/* PRONUNCIATION */
+.target-phrase { text-align: center; background: var(--card); border-radius: 16px; padding: 16px; border: 1px solid var(--border); }
+.target-phrase .ko-ph { font-family: 'Jua'; font-size: 26px; }
+.target-phrase .ja-ph { font-size: 11px; color: var(--text2); margin-top: 4px; }
+.target-phrase .rom-ph { font-size: 11px; color: var(--acc); margin-top: 2px; font-weight: 700; }
+.gauge-area { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.gauge-ring {
+  width: 120px; height: 120px; border-radius: 50%;
+  background: conic-gradient(var(--acc) 0 82%, var(--bg) 82% 100%);
+  display: grid; place-items: center;
+  box-shadow: 0 0 0 4px var(--bg), 0 4px 16px rgba(232,62,140,.25);
+}
+.gauge-ring::before {
+  content: '';
+  position: absolute;
+  width: 96px; height: 96px; border-radius: 50%; background: var(--card);
+}
+.gauge-num { position: relative; font-size: 34px; font-weight: 900; color: var(--acc); line-height: 1; }
+.gauge-num small { font-size: 13px; color: var(--text2); }
+.gauge-label { font-size: 14px; font-weight: 700; color: var(--acc); }
+.rec-btn {
+  width: 64px; height: 64px; border-radius: 50%; background: var(--acc); color: #fff;
+  font-size: 24px; border: none; cursor: pointer; display: grid; place-items: center;
+  box-shadow: 0 6px 18px rgba(232,62,140,.45);
+}
+.feedback-card { background: #FFF5F9; border-radius: 12px; padding: 11px; border: 1px solid rgba(232,62,140,.2); font-size: 11.5px; color: var(--text2); line-height: 1.6; }
+
+/* PUZZLE */
+.pattern-card {
+  background: linear-gradient(135deg, rgba(232,62,140,.08), rgba(232,62,140,.02));
+  border-radius: 16px; padding: 14px; border: 1.5px solid rgba(232,62,140,.25); text-align: center;
+}
+.pattern-card .plabel { font-family: 'Jua'; font-size: 20px; color: var(--text); }
+.pattern-card .pmean  { font-size: 11px; color: var(--text2); margin-top: 3px; }
+.slot-row { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px; }
+.drop-slot {
+  min-width: 70px; padding: 8px 12px; border: 2px dashed var(--acc);
+  border-radius: 10px; font-family: 'Jua'; font-size: 17px; color: var(--acc);
+  background: rgba(232,62,140,.05); text-align: center;
+}
+.fixed-part { font-family: 'Jua'; font-size: 17px; color: var(--text); }
+.chip-area { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.verb-chip {
+  background: var(--card); border: 1.5px solid var(--border); border-radius: 10px;
+  padding: 8px 12px; display: flex; flex-direction: column; align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08); cursor: grab;
+}
+.verb-chip .vko { font-family: 'Jua'; font-size: 15px; color: var(--text); }
+.verb-chip .vja { font-size: 9px; color: var(--text2); margin-top: 1px; }
+.combo-badge {
+  align-self: center; background: var(--acc); color: #fff; font-weight: 700; font-size: 11px;
+  padding: 4px 12px; border-radius: 99px;
+}
+.answer-card {
+  background: #ECFDF5; border-radius: 12px; padding: 11px; border: 1px solid #6EE7B7; text-align: center;
+}
+.answer-card .ans { font-family: 'Jua'; font-size: 18px; color: #059669; }
+.answer-card .ans-j { font-size: 10px; color: #059669; opacity: .8; margin-top: 2px; }
+
+/* ROLEPLAY LIST */
+.sit-list { display: flex; flex-direction: column; gap: 8px; overflow: hidden; }
+.sit-row {
+  background: var(--card); border-radius: 14px; padding: 13px; border: 1px solid var(--border);
+  display: flex; align-items: center; gap: 11px; box-shadow: 0 2px 6px rgba(0,0,0,.05);
+}
+.sit-row .sit-ico { font-size: 28px; flex: 0 0 auto; }
+.sit-row .sit-info { flex: 1; }
+.sit-row .sit-name { font-weight: 700; font-size: 13.5px; }
+.sit-row .sit-sub  { font-size: 10.5px; color: var(--text2); margin-top: 2px; }
+.sit-row .sit-lv   { font-size: 10px; }
+.sit-row .arrow    { color: var(--text3); font-size: 16px; }
+
+/* CHAT */
+.chat-header { padding: 10px 16px 10px; background: var(--card); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; flex: 0 0 auto; }
+.chat-header .sit-tag { background: rgba(232,62,140,.1); color: var(--acc); font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 99px; }
+.chat-header .timer { margin-left: auto; font-weight: 700; font-size: 14px; color: var(--acc); }
+.bubbles { flex: 1; padding: 12px; display: flex; flex-direction: column; gap: 9px; overflow: hidden; }
+.bub-row { display: flex; gap: 7px; }
+.bub-row.me { justify-content: flex-end; }
+.bub-avatar { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, var(--acc), var(--acc2)); flex: 0 0 auto; display: grid; place-items: center; font-size: 13px; color: #fff; font-weight: 700; }
+.bubble {
+  max-width: 76%; padding: 9px 12px; border-radius: 16px; font-size: 12px; line-height: 1.45;
+}
+.bubble .bko { font-family: 'Noto Sans KR'; font-size: 13px; font-weight: 700; }
+.bubble .bja { font-size: 9.5px; margin-top: 2px; opacity: .75; }
+.ai-bub { background: var(--card); border: 1px solid var(--border); border-top-left-radius: 4px; }
+.me-bub { background: var(--acc); color: #fff; border-top-right-radius: 4px; }
+.me-bub .bja { color: rgba(255,255,255,.8); }
+.replies-area { padding: 8px 12px; background: var(--card); border-top: 1px solid var(--border); flex: 0 0 auto; }
+.replies-label { font-size: 10px; color: var(--text2); font-weight: 700; margin-bottom: 6px; }
+.reply-chips { display: flex; flex-direction: column; gap: 5px; }
+.reply-chip {
+  background: var(--bg); border: 1.5px solid var(--border); border-radius: 10px; padding: 8px 11px;
+  display: flex; align-items: center; gap: 6px; cursor: pointer;
+}
+.reply-chip .rko { font-family: 'Noto Sans KR'; font-size: 12.5px; font-weight: 700; flex: 1; }
+.reply-chip .rja { font-size: 9px; color: var(--text2); }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>한국어 Study — ファンクショナルモックアップ</h1>
+  <p>機能ベースのUIレイアウト確認用 ／ デザインは後で差し替え予定</p>
+</div>
+
+<div class="grid">
+
+  <!-- ① ホーム -->
+  <div>
+  <div class="phone"><div class="screen">
+    <div class="sb"><span>9:41</span><div class="icons"><span>▮▮▮</span><span>WiFi</span><span>🔋</span></div></div>
+    <div class="body" style="gap:12px;justify-content:center">
+      <div style="text-align:center;padding:20px 0 8px">
+        <div style="font-family:'Noto Sans KR',sans-serif;font-size:13px;color:var(--text2);margin-bottom:6px">즐겁게 배우자! ♡</div>
+        <div style="font-family:'Jua';font-size:36px;color:var(--text);line-height:1.1">한국어</div>
+        <div style="font-family:'Jua';font-size:22px;color:var(--acc)">Study</div>
+      </div>
+      <div class="menu-grid">
+        <div class="menu-tile"><span class="ico">🔤</span><span class="mn">ハングル学習</span></div>
+        <div class="menu-tile"><span class="ico">📢</span><span class="mn">フレーズ音読</span></div>
+        <div class="menu-tile"><span class="ico">🎤</span><span class="mn">発音チェック</span></div>
+        <div class="menu-tile"><span class="ico">🧩</span><span class="mn">パズル学習</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr;gap:10px">
+        <div class="menu-tile" style="flex-direction:row;align-items:center;gap:12px">
+          <span class="ico">💬</span>
+          <div><div class="mn">ロールプレイ</div><div class="mj">バーチャルファンサイン・カフェ・タクシー...</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="nav">
+      <div class="on"><span class="ni">🏠</span>홈</div>
+      <div><span class="ni">📊</span>진행</div>
+      <div><span class="ni">⚙️</span>설정</div>
+    </div>
+  </div></div>
+  <div class="screen-label">① ホーム<span>F-07 / タイトル＋5機能タイル</span></div>
+  </div>
+
+  <!-- ② ハングル一覧 -->
+  <div>
+  <div class="phone"><div class="screen">
+    <div class="sb"><span>9:41</span><div class="icons"><span>▮▮▮</span><span>🔋</span></div></div>
+    <div class="hbar"><span class="title">한글 배우기</span><span class="right">14/40</span></div>
+    <div class="body" style="gap:10px">
+      <div class="tabs">
+        <div class="tab on">자음 子音</div>
+        <div class="tab">모음 母音</div>
+      </div>
+      <div class="hgrid">
+        <div class="hcell done"><span class="ch">ㄱ</span><span class="ro">g/k</span></div>
+        <div class="hcell done"><span class="ch">ㄴ</span><span class="ro">n</span></div>
+        <div class="hcell done"><span class="ch">ㄷ</span><span class="ro">d/t</span></div>
+        <div class="hcell"><span class="ch">ㄹ</span><span class="ro">r/l</span></div>
+        <div class="hcell done"><span class="ch">ㅁ</span><span class="ro">m</span></div>
+        <div class="hcell"><span class="ch">ㅂ</span><span class="ro">b/p</span></div>
+        <div class="hcell"><span class="ch">ㅅ</span><span class="ro">s</span></div>
+        <div class="hcell"><span class="ch">ㅇ</span><span class="ro">ng</span></div>
+        <div class="hcell"><span class="ch">ㅈ</span><span class="ro">j</span></div>
+        <div class="hcell"><span class="ch">ㅊ</span><span class="ro">ch</span></div>
+        <div class="hcell"><span class="ch">ㅋ</span><span class="ro">k</span></div>
+        <div class="hcell"><span class="ch">ㅌ</span><span class="ro">t</span></div>
+      </div>
+      <div style="font-size:11px;color:var(--text3);text-align:center">✓ 習得済み・タップで詳細へ</div>
+    </div>
+    <div class="nav">
+      <div class="on"><span class="ni">🏠</span>홈</div>
+      <div><span class="ni">📊</span>진행</div>
+      <div><span class="ni">⚙️</span>설정</div>
+    </div>
+  </div></div>
+  <div class="screen-label">② ハングル一覧<span>F-01 / グリッド・タブ・習得状態</span></div>
+  </div>
+
+  <!-- ③ ハングル詳細 -->
+  <div>
+  <div class="phone"><div class="screen">
+    <div class="sb"><span>9:41</span><div class="icons"><span>▮▮▮</span><span>🔋</span></div></div>
+    <div class="hbar"><span class="back">‹</span><span class="title">ㄱ の詳細</span></div>
+    <div class="body" style="gap:10px">
+      <div class="hdetail-char">
+        <div class="big ko">ㄱ</div>
+        <div class="rom">g / k</div>
+      </div>
+      <div class="hint-row">
+        <div class="hint-box">
+          <div style="font-weight:700;font-size:12px;margin-bottom:4px">口の形ヒント</div>
+          舌の奥を上顎につけて息を止め、「カ」と出す
+        </div>
+      </div>
+      <div class="example-row">
+        <div class="ex-card"><div class="kw ko-big ko">가방</div><div class="jw">かばん</div></div>
+        <div class="ex-card"><div class="kw ko-big ko">고양이</div><div class="jw">ねこ</div></div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-primary" style="flex:1;font-size:13px">🔊 聞く</button>
+        <button class="btn btn-ghost" style="flex:1;font-size:13px">🔊 ゆっくり</button>
+      </div>
+      <button class="btn btn-outline" style="font-size:13px">✓ 習得済みにする</button>
+    </div>
+  </div></div>
+  <div class="screen-label">③ ハングル詳細<span>F-01 / 口ヒント・例単語・お手本再生</span></div>
+  </div>
+
+  <!-- ④ フレーズ一覧 -->
+  <div>
+  <div class="phone"><div class="screen">
+    <div class="sb"><span>9:41</span><div class="icons"><span>▮▮▮</span><span>🔋</span></div></div>
+    <div class="hbar"><span class="title">프레이즈</span></div>
+    <div class="body" style="padding:10px 12px;gap:9px">
+      <div style="display:flex;gap:6px;overflow:hidden;flex-wrap:nowrap">
+        <div class="badge badge-acc">응원💖</div>
+        <div class="badge badge-gray">콘서트</div>
+        <div class="badge badge-gray">굿즈</div>
+        <div class="badge badge-gray">팬싸</div>
+        <div class="badge badge-gray">SNS</div>
+      </div>
+      <div class="phrase-list">
+        <div class="phrase-row">
+          <div class="pk"><div class="pko ko">사랑해요</div><div class="pja">愛してます</div></div>
+          <div class="badge badge-gray">Lv1</div>
+          <div class="arrow">›</div>
+        </div>
+        <div class="phrase-row">
+          <div class="pk"><div class="pko ko">너무 멋있어요</div><div class="pja">すごくかっこいい</div></div>
+          <div class="badge badge-gray">Lv1</div>
+          <div class="arrow">›</div>
+        </div>
+        <div class="phrase-row">
+          <div class="pk"><div class="pko ko">최고예요</div><div class="pja">最高です</div></div>
+          <div class="badge badge-gray">Lv1</div>
+          <div class="arrow">›</div>
+        </div>
+        <div class="phrase-row">
+          <div class="pk"><div class="pko ko">응원할게요</div><div class="pja">応援します</div></div>
+          <div class="badge badge-green">Lv2</div>
+          <div class="arrow">›</div>
+        </div>
+        <div class="phrase-row">
+          <div class="pk"><div class="pko ko">항상 응원해요</div><div class="pja">いつも応援してます</div></div>
+          <div class="badge badge-green">Lv2</div>
+          <div class="arrow">›</div>
+        </div>
+      </div>
+    </div>
+    <div class="nav">
+      <div class="on"><span class="ni">🏠</span>홈</div>
+      <div><span class="ni">📊</span>진행</div>
+      <div><span class="ni">⚙️</span>설정</div>
+    </div>
+  </div></div>
+  <div class="screen-label">④ フレーズ一覧<span>F-02 / カテゴリタブ・フレーズ一覧</span></div>
+  </div>
+
+  <!-- ⑤ 発音チェック -->
+  <div>
+  <div class="phone"><div class="screen">
+    <div class="sb"><span>9:41</span><div class="icons"><span>▮▮▮</span><span>🔋</span></div></div>
+    <div class="hbar"><span class="back">‹</span><span class="title">발음 체크</span></div>
+    <div class="body" style="align-items:center;gap:10px">
+      <div class="target-phrase" style="width:100%">
+        <div class="ko-ph ko">오빠 사랑해요!</div>
+        <div class="ja-ph">オッパ愛してる！</div>
+        <div class="rom-ph">oppa saranghaeyo</div>
+      </div>
+      <div style="display:flex;gap:8px;width:100%">
+        <button class="btn btn-ghost" style="flex:1;font-size:12px">🔊 聞く</button>
+        <button class="btn btn-ghost" style="flex:1;font-size:12px">🔊 ゆっくり</button>
+      </div>
+      <div class="gauge-area" style="position:relative">
+        <div class="gauge-ring"><span class="gauge-num">82<small>点</small></span></div>
+        <div class="gauge-label">좋아요 👍</div>
+      </div>
+      <div class="feedback-card" style="width:100%">
+        「사」の発音があと少し。口を横に引いてハキッと「サ」と言ってみよう♪
+      </div>
+      <button class="rec-btn">🎤</button>
+      <div style="font-size:11px;color:var(--text2)">タップして録音</div>
+    </div>
+  </div></div>
+  <div class="screen-label">⑤ 発音チェック<span>F-03 / スコアゲージ・フィードバック・録音</span></div>
+  </div>
+
+  <!-- ⑥ パズル学習 -->
+  <div>
+  <div class="phone"><div class="screen">
+    <div class="sb"><span>9:41</span><div class="icons"><span>▮▮▮</span><span>🔋</span></div></div>
+    <div class="hbar"><span class="title">문장 퍼즐</span><span class="right">3/5問</span></div>
+    <div class="body" style="gap:10px">
+      <div class="combo-badge">🔥 3 COMBO!</div>
+      <div class="pattern-card">
+        <div class="plabel ko-big ko">〜고 싶어요</div>
+        <div class="pmean">〜したいです</div>
+        <div class="slot-row">
+          <div class="drop-slot">？</div>
+          <div class="fixed-part ko">고 싶어요</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--text2);text-align:center">↓ 動詞をドラッグ</div>
+      <div class="chip-area">
+        <div class="verb-chip"><span class="vko ko">가다</span><span class="vja">行く</span></div>
+        <div class="verb-chip"><span class="vko ko">보다</span><span class="vja">見る</span></div>
+        <div class="verb-chip"><span class="vko ko">먹다</span><span class="vja">食べる</span></div>
+        <div class="verb-chip"><span class="vko ko">사다</span><span class="vja">買う</span></div>
+      </div>
+      <div class="answer-card">
+        <div class="ans ko">콘서트 보고 싶어요 ✓</div>
+        <div class="ans-j">コンサート見たい！</div>
+      </div>
+    </div>
+  </div></div>
+  <div class="screen-label">⑥ パズル学習<span>F-04 / 文型×動詞 D&D・コンボ演出</span></div>
+  </div>
+
+  <!-- ⑦ ロールプレイ一覧 -->
+  <div>
+  <div class="phone"><div class="screen">
+    <div class="sb"><span>9:41</span><div class="icons"><span>▮▮▮</span><span>🔋</span></div></div>
+    <div class="hbar"><span class="title">롤플레이</span></div>
+    <div class="body" style="padding:10px 12px;gap:8px">
+      <div style="font-size:12px;color:var(--text2)">シチュエーションを選んでね♡</div>
+      <div class="sit-list">
+        <div class="sit-row">
+          <div class="sit-ico">📹</div>
+          <div class="sit-info">
+            <div class="sit-name">영통팬싸</div>
+            <div class="sit-sub">ビデオ通話ファンサイン</div>
+          </div>
+          <div class="badge badge-acc">人気</div>
+          <div class="arrow">›</div>
+        </div>
+        <div class="sit-row">
+          <div class="sit-ico">🛍️</div>
+          <div class="sit-info">
+            <div class="sit-name">굿즈 구매</div>
+            <div class="sit-sub">グッズ購入</div>
+          </div>
+          <div class="badge badge-gray">Lv1</div>
+          <div class="arrow">›</div>
+        </div>
+        <div class="sit-row">
+          <div class="sit-ico">📸</div>
+          <div class="sit-info">
+            <div class="sit-name">포카 교환</div>
+            <div class="sit-sub">フォトカード交換</div>
+          </div>
+          <div class="badge badge-gray">Lv1</div>
+          <div class="arrow">›</div>
+        </div>
+        <div class="sit-row">
+          <div class="sit-ico">☕</div>
+          <div class="sit-info">
+            <div class="sit-name">카페에서 주문</div>
+            <div class="sit-sub">カフェで注文</div>
+          </div>
+          <div class="badge badge-gray">Lv1</div>
+          <div class="arrow">›</div>
+        </div>
+        <div class="sit-row">
+          <div class="sit-ico">🚕</div>
+          <div class="sit-info">
+            <div class="sit-name">택시</div>
+            <div class="sit-sub">タクシー</div>
+          </div>
+          <div class="badge badge-gray">Lv2</div>
+          <div class="arrow">›</div>
+        </div>
+      </div>
+    </div>
+    <div class="nav">
+      <div class="on"><span class="ni">🏠</span>홈</div>
+      <div><span class="ni">📊</span>진행</div>
+      <div><span class="ni">⚙️</span>설정</div>
+    </div>
+  </div></div>
+  <div class="screen-label">⑦ ロールプレイ一覧<span>F-09 / シチュエーション選択</span></div>
+  </div>
+
+  <!-- ⑧ チャット -->
+  <div>
+  <div class="phone"><div class="screen">
+    <div class="sb"><span>9:41</span><div class="icons"><span>▮▮▮</span><span>🔋</span></div></div>
+    <div class="chat-header">
+      <span class="back" style="font-size:16px">‹</span>
+      <span class="sit-tag">📹 영통팬싸</span>
+      <span class="timer">⏱ 0:42</span>
+    </div>
+    <div class="bubbles">
+      <div class="bub-row">
+        <div class="bub-avatar">AI</div>
+        <div class="bubble ai-bub">
+          <div class="bko ko">앗! 안녕하세요~ 이름이 뭐예요?</div>
+          <div class="bja">あっ！こんにちは〜お名前は？</div>
+        </div>
+      </div>
+      <div class="bub-row me">
+        <div class="bubble me-bub">
+          <div class="bko ko">타쿠야예요! 진짜 팬이에요 ㅠㅠ</div>
+          <div class="bja">タクヤです！ガチのファンです😭</div>
+        </div>
+      </div>
+      <div class="bub-row">
+        <div class="bub-avatar">AI</div>
+        <div class="bubble ai-bub">
+          <div class="bko ko">헐 감동.. 일본에서 왔어요?</div>
+          <div class="bja">え、感動..日本から来たの？</div>
+        </div>
+      </div>
+    </div>
+    <div class="replies-area">
+      <div class="replies-label">おすすめの返答 ♡</div>
+      <div class="reply-chips">
+        <div class="reply-chip">
+          <div><div class="rko ko">네! 보고 싶었어요 ㅠㅠ</div><div class="rja">はい！会いたかった😭</div></div>
+        </div>
+        <div class="reply-chip">
+          <div><div class="rko ko">오빠 너무 멋있어요!</div><div class="rja">オッパかっこよすぎ！</div></div>
+        </div>
+        <div class="reply-chip">
+          <div><div class="rko ko">컴백 응원할게요!</div><div class="rja">カムバ応援してます！</div></div>
+        </div>
+      </div>
+    </div>
+  </div></div>
+  <div class="screen-label">⑧ ロールプレイ チャット<span>F-09 / 吹き出し・3択・タイマー</span></div>
+  </div>
+
+</div>
+</body>
+</html>

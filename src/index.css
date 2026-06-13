@@ -1,0 +1,469 @@
+@import 'tailwindcss';
+
+/* ============================================================
+   한국어 Study — デザインシステム v2（画像素材ゼロ / CSS+SVGのみ）
+   design/design-system-v2.html の世界観を全画面へ適用
+   ============================================================ */
+:root {
+  --hot: #ff1a8c;
+  --hot2: #ff5cb0;
+  --hot3: #ff8ac8;
+  --deep: #ffe3f2; /* ダーク背景上の明色テキスト */
+  --inkcard: #7a0040; /* ガラスカード上の濃いテキスト */
+  --inksub: #b0487c;
+  --gold: #f6d77a;
+  --gold2: #d9ac3c;
+  --bgA: #2b0118;
+  --bgB: #4a0930;
+  --bgC: #1c010f;
+  --glassEdge: rgba(255, 255, 255, 0.78);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  font-family: 'Gowun Dodum', 'Noto Sans KR', sans-serif;
+  background: #120009;
+  color: var(--deep);
+}
+
+/* 韓国語・見出し用フォント */
+.font-display {
+  font-family: 'Black Han Sans', 'Noto Sans KR', sans-serif;
+}
+.font-ko {
+  font-family: 'Jua', 'Noto Sans KR', sans-serif;
+}
+.font-cute {
+  font-family: 'Hachi Maru Pop', 'Gowun Dodum', sans-serif;
+}
+.font-pop {
+  font-family: 'Mochiy Pop P One', 'Gowun Dodum', sans-serif;
+}
+
+/* ---------- アプリの「画面」：暗いグラデ＋装飾レイヤー ---------- */
+.scene {
+  background:
+    radial-gradient(120% 70% at 50% -8%, var(--bgB) 0%, transparent 60%),
+    radial-gradient(100% 60% at 50% 108%, #3d0524 0%, transparent 55%),
+    linear-gradient(180deg, var(--bgA), var(--bgC));
+}
+
+/* leopard layer */
+.leo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='110' viewBox='0 0 110 110'%3E%3Cg fill='%239E0A52'%3E%3Cellipse cx='28' cy='12' rx='9' ry='5.5' transform='rotate(-12,28,12)'/%3E%3Cellipse cx='44' cy='20' rx='7' ry='4.5' transform='rotate(28,44,20)'/%3E%3Cellipse cx='45' cy='35' rx='7' ry='4.5' transform='rotate(-18,45,35)'/%3E%3Cellipse cx='29' cy='43' rx='9' ry='5.5' transform='rotate(12,29,43)'/%3E%3Cellipse cx='12' cy='35' rx='7' ry='4.5'/%3E%3Cellipse cx='80' cy='62' rx='9' ry='5.5' transform='rotate(-12,80,62)'/%3E%3Cellipse cx='96' cy='70' rx='7' ry='4.5' transform='rotate(28,96,70)'/%3E%3Cellipse cx='97' cy='85' rx='7' ry='4.5' transform='rotate(-18,97,85)'/%3E%3Cellipse cx='81' cy='93' rx='9' ry='5.5' transform='rotate(12,81,93)'/%3E%3Cellipse cx='64' cy='85' rx='7' ry='4.5'/%3E%3Cellipse cx='66' cy='10' rx='5' ry='3.5' transform='rotate(20,66,10)'/%3E%3Cellipse cx='10' cy='66' rx='5' ry='3.5'/%3E%3Cellipse cx='92' cy='30' rx='4.5' ry='3' transform='rotate(-25,92,30)'/%3E%3Cellipse cx='46' cy='62' rx='5.5' ry='3.5'/%3E%3Cellipse cx='18' cy='90' rx='4.5' ry='3' transform='rotate(15,18,90)'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 110px 110px;
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.25) 40%,
+    rgba(0, 0, 0, 0.55)
+  );
+  mask-image: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.25) 40%,
+    rgba(0, 0, 0, 0.55)
+  );
+}
+
+/* glitter layers */
+.glit,
+.glit2 {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.glit {
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.95) 1px, transparent 1.6px),
+    radial-gradient(rgba(255, 160, 210, 0.9) 1px, transparent 1.6px);
+  background-size: 46px 46px, 67px 67px;
+  background-position: 0 0, 23px 31px;
+  animation: tw 2.8s ease-in-out infinite alternate;
+}
+.glit2 {
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.8) 0.8px, transparent 1.3px),
+    radial-gradient(rgba(246, 215, 122, 0.85) 1px, transparent 1.5px);
+  background-size: 29px 29px, 83px 83px;
+  background-position: 12px 6px, 40px 60px;
+  animation: tw 3.7s ease-in-out infinite alternate-reverse;
+}
+@keyframes tw {
+  from {
+    opacity: 0.18;
+  }
+  to {
+    opacity: 0.6;
+  }
+}
+
+/* big star sparkles */
+.spark {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  animation: sparkle 2.6s ease-in-out infinite;
+}
+.spark svg {
+  display: block;
+  filter: drop-shadow(0 0 6px #fff);
+}
+@keyframes sparkle {
+  0%,
+  100% {
+    transform: scale(0.5);
+    opacity: 0.15;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.95;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glit,
+  .glit2,
+  .spark {
+    animation: none;
+  }
+}
+
+/* ---------- ガラスカード ---------- */
+.glass {
+  position: relative;
+  border-radius: 22px;
+  background: linear-gradient(
+    170deg,
+    rgba(255, 225, 240, 0.46) 0%,
+    rgba(255, 170, 212, 0.26) 38%,
+    rgba(255, 130, 190, 0.16) 100%
+  );
+  border: 1.5px solid var(--glassEdge);
+  -webkit-backdrop-filter: blur(10px) saturate(1.35);
+  backdrop-filter: blur(10px) saturate(1.35);
+  box-shadow:
+    inset 0 2px 1px rgba(255, 255, 255, 0.95),
+    inset 0 14px 22px -12px rgba(255, 255, 255, 0.65),
+    inset 0 -10px 18px -10px rgba(150, 0, 80, 0.5),
+    0 4px 8px rgba(60, 0, 32, 0.45),
+    0 16px 34px -10px rgba(150, 0, 80, 0.55),
+    0 0 22px rgba(255, 26, 140, 0.22);
+  color: var(--inkcard);
+}
+.glass::before {
+  content: '';
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  top: 2px;
+  height: 46%;
+  border-radius: 18px 18px 50% 50% / 18px 18px 100% 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0)
+  );
+  pointer-events: none;
+}
+
+/* ---------- ボタン ---------- */
+.btn-hot {
+  position: relative;
+  border: none;
+  cursor: pointer;
+  border-radius: 999px;
+  font-family: 'Jua', 'Noto Sans KR', sans-serif;
+  color: #fff;
+  overflow: hidden;
+  background: linear-gradient(180deg, #ff7abf 0%, var(--hot) 48%, #d40070 100%);
+  box-shadow:
+    inset 0 2px 1px rgba(255, 255, 255, 0.85),
+    inset 0 -3px 5px rgba(120, 0, 60, 0.6),
+    0 7px 16px -4px rgba(255, 26, 140, 0.7),
+    0 0 18px rgba(255, 26, 140, 0.4);
+  text-shadow: 0 1px 2px rgba(120, 0, 60, 0.5);
+}
+.btn-hot::before {
+  content: '';
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 2px;
+  height: 42%;
+  border-radius: 99px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.75), transparent);
+  pointer-events: none;
+}
+.btn-hot:disabled {
+  background: linear-gradient(180deg, #9a7388, #6b4f5e);
+  box-shadow: none;
+  opacity: 0.7;
+}
+.btn-ghost {
+  position: relative;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: 'Jua', 'Noto Sans KR', sans-serif;
+  background: linear-gradient(
+    170deg,
+    rgba(255, 225, 240, 0.4),
+    rgba(255, 150, 200, 0.18)
+  );
+  border: 1.5px solid var(--glassEdge);
+  color: var(--inkcard);
+  box-shadow:
+    inset 0 2px 1px rgba(255, 255, 255, 0.9),
+    0 5px 12px rgba(60, 0, 32, 0.4);
+}
+.btn-ghost:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* ---------- ピル / バッジ ---------- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Mochiy Pop P One', sans-serif;
+  font-size: 12px;
+  border-radius: 99px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+.pill-lv1 {
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--hot);
+}
+.pill-lv2 {
+  background: linear-gradient(135deg, var(--gold), #fff0c0);
+  color: #7a5500;
+}
+.pill-lv3 {
+  background: linear-gradient(135deg, #ff8ac8, #ffd3ea);
+  color: #7a0040;
+}
+.pill-cat {
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--hot);
+  box-shadow: 0 3px 8px rgba(120, 0, 60, 0.35);
+}
+.pill-cat-off {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffc9e4;
+}
+
+/* ---------- 見出し / ロゴ ---------- */
+.kicker {
+  font-family: 'Hachi Maru Pop', sans-serif;
+  font-size: 13px;
+  color: #ffb7db;
+  text-align: center;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(255, 26, 140, 0.7);
+}
+.app-logo {
+  font-family: 'Black Han Sans', sans-serif;
+  text-align: center;
+  font-size: 54px;
+  line-height: 1.02;
+  letter-spacing: -1px;
+  background: linear-gradient(
+    180deg,
+    #ffffff 8%,
+    #ffd3ea 38%,
+    #ff5cb0 52%,
+    #ff1a8c 70%,
+    #c4006b 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.85))
+    drop-shadow(0 3px 0 #7a0040) drop-shadow(0 5px 1px #45001f)
+    drop-shadow(0 0 18px rgba(255, 26, 140, 0.85));
+}
+.app-logo-sub {
+  font-family: 'Hachi Maru Pop', sans-serif;
+  text-align: center;
+  font-size: 21px;
+  margin-top: 2px;
+  background: linear-gradient(180deg, #fff 20%, #e9d5ff 45%, #b9b3c9 55%, #fff 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 0 rgba(90, 0, 50, 0.7))
+    drop-shadow(0 0 10px rgba(255, 255, 255, 0.55));
+}
+.h-title {
+  font-family: 'Jua', 'Noto Sans KR', sans-serif;
+  font-size: 19px;
+  color: #fff;
+  text-shadow:
+    0 0 12px rgba(255, 26, 140, 0.8),
+    0 2px 0 rgba(90, 0, 50, 0.8);
+}
+.h-title small {
+  display: block;
+  font-family: 'Hachi Maru Pop', sans-serif;
+  font-size: 12px;
+  color: var(--gold);
+  text-shadow: 0 0 8px rgba(246, 215, 122, 0.8);
+  margin-top: 2px;
+}
+
+/* ---------- ボトムナビ ---------- */
+.nav-bar {
+  background: linear-gradient(0deg, rgba(18, 0, 9, 0.92), rgba(50, 2, 28, 0.55));
+  border-top: 1.5px solid rgba(255, 90, 170, 0.4);
+  box-shadow: 0 -6px 18px rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.nav-item {
+  font-family: 'Jua', 'Noto Sans KR', sans-serif;
+  color: #c26b99;
+}
+.nav-item.on {
+  color: #fff;
+  text-shadow: 0 0 8px var(--hot);
+}
+
+/* ---------- スコアゲージ / 判定 ---------- */
+.gauge-num {
+  font-family: 'Black Han Sans', sans-serif;
+  color: #fff;
+  text-shadow:
+    0 0 14px var(--hot),
+    0 0 30px rgba(255, 26, 140, 0.7);
+}
+.verdict {
+  font-family: 'Black Han Sans', sans-serif;
+  color: var(--gold);
+  text-shadow:
+    0 0 14px rgba(246, 215, 122, 0.9),
+    0 2px 0 rgba(90, 40, 0, 0.6);
+}
+
+/* プリクラ風スタンプ */
+.stamp {
+  font-family: 'Hachi Maru Pop', sans-serif;
+  color: #fff;
+  -webkit-text-stroke: 5px var(--hot);
+  paint-order: stroke;
+  text-shadow:
+    0 0 12px var(--hot),
+    0 0 26px rgba(255, 26, 140, 0.8);
+  transform: rotate(-12deg);
+  animation: stampin 0.55s cubic-bezier(0.18, 1.5, 0.4, 1) both;
+}
+@keyframes stampin {
+  from {
+    transform: rotate(-12deg) scale(0);
+  }
+  to {
+    transform: rotate(-12deg) scale(1);
+  }
+}
+
+/* 録音ボタン */
+.rec-btn {
+  position: relative;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 26%, #ffb1d8, #ff1a8c 58%, #a8005c);
+  box-shadow:
+    inset 0 3px 3px rgba(255, 255, 255, 0.85),
+    inset 0 -5px 8px rgba(110, 0, 55, 0.7),
+    0 10px 24px -6px rgba(255, 26, 140, 0.85),
+    0 0 0 7px rgba(255, 26, 140, 0.18),
+    0 0 0 14px rgba(255, 26, 140, 0.08);
+}
+.rec-btn.recording {
+  background: radial-gradient(circle at 32% 26%, #ffd1d1, #ff3b3b 58%, #a80000);
+  box-shadow:
+    inset 0 3px 3px rgba(255, 255, 255, 0.85),
+    0 10px 24px -6px rgba(255, 0, 0, 0.7),
+    0 0 0 7px rgba(255, 0, 0, 0.18),
+    0 0 0 14px rgba(255, 0, 0, 0.08);
+}
+.rec-btn:disabled {
+  background: radial-gradient(circle at 32% 26%, #b9a3ad, #6b4f5e);
+  box-shadow: none;
+}
+
+/* ---------- チャット ---------- */
+.chat-top {
+  background: linear-gradient(
+    170deg,
+    rgba(255, 225, 240, 0.4),
+    rgba(255, 140, 195, 0.2)
+  );
+  border-bottom: 1.5px solid var(--glassEdge);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.ctimer {
+  font-family: 'Black Han Sans', sans-serif;
+  color: #7df9ff;
+  text-shadow: 0 0 10px rgba(125, 249, 255, 0.9);
+}
+.ctimer.warn {
+  color: #ff8a8a;
+  text-shadow: 0 0 10px rgba(255, 80, 80, 0.9);
+}
+.bub-ai {
+  color: var(--inkcard);
+  border-top-left-radius: 5px;
+  background: linear-gradient(
+    170deg,
+    rgba(255, 235, 246, 0.92),
+    rgba(255, 200, 228, 0.78)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.95),
+    0 4px 10px rgba(60, 0, 32, 0.4);
+}
+.bub-me {
+  color: #fff;
+  border-top-right-radius: 5px;
+  background: linear-gradient(180deg, #ff7abf, var(--hot) 60%, #d40070);
+  box-shadow:
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.6),
+    0 4px 12px rgba(255, 26, 140, 0.55);
+  text-shadow: 0 1px 1px rgba(120, 0, 60, 0.4);
+}
+.schip {
+  background: linear-gradient(
+    170deg,
+    rgba(255, 235, 246, 0.9),
+    rgba(255, 205, 230, 0.7)
+  );
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    inset 0 1.5px 1px #fff,
+    0 4px 9px rgba(60, 0, 32, 0.4);
+  color: var(--inkcard);
+}
+
+/* ---------- フォーム入力（ダーク背景上） ---------- */
+.field {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1.5px solid var(--glassEdge);
+  border-radius: 14px;
+  color: var(--inkcard);
+}
+.field::placeholder {
+  color: var(--inksub);
+}

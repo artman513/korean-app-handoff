@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한국어 Study — CSS/SVGデザイン v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Mochiy+Pop+P+One&family=Hachi+Maru+Pop&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   한국어 Study — デザインシステム v2（画像素材ゼロ / CSS+SVGのみ）
+   ============================================================ */
+:root{
+  --hot:#FF1A8C; --hot2:#FF5CB0; --hot3:#FF8AC8;
+  --deep:#FFE3F2;            /* 明るいテキスト（カード上の濃色は --inkcard） */
+  --inkcard:#7A0040;          /* ガラスカード上の濃いテキスト */
+  --inksub:#B0487C;
+  --gold:#F6D77A; --gold2:#D9AC3C;
+  --bgA:#2B0118; --bgB:#4A0930; --bgC:#1C010F;
+  --leoSpot:#9E0A52;
+  --glass:rgba(255,190,222,.34);
+  --glassEdge:rgba(255,255,255,.78);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:'Gowun Dodum',sans-serif;
+  background:#120009;
+  color:var(--deep);
+  display:flex;flex-wrap:wrap;gap:44px;justify-content:center;align-items:flex-start;
+  padding:44px 20px 90px;
+}
+.shot{width:330px}
+.shot-label{text-align:center;margin-top:14px;font-family:'Jua';font-size:15px;color:#FF9ACB;text-shadow:0 0 12px rgba(255,26,140,.6)}
+.shot-label small{display:block;font-family:'Gowun Dodum';font-size:11px;color:#C97AA4;margin-top:3px}
+
+/* ---------- phone ---------- */
+.phone{
+  border-radius:46px;padding:7px;
+  background:linear-gradient(165deg,#FF9ACB,#FF1A8C 45%,#8E0050);
+  box-shadow:
+    0 36px 80px -24px #000,
+    0 0 0 1.5px rgba(255,255,255,.5),
+    0 0 44px rgba(255,26,140,.45);
+}
+.screen{
+  position:relative;border-radius:40px;overflow:hidden;height:660px;
+  display:flex;flex-direction:column;
+  background:
+    radial-gradient(120% 70% at 50% -8%, var(--bgB) 0%, transparent 60%),
+    radial-gradient(100% 60% at 50% 108%, #3D0524 0%, transparent 55%),
+    linear-gradient(180deg,var(--bgA),var(--bgC));
+}
+/* leopard layer (SVG pattern, subtle) */
+.leo{
+  position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='110' viewBox='0 0 110 110'%3E%3Cg fill='%239E0A52'%3E%3Cellipse cx='28' cy='12' rx='9' ry='5.5' transform='rotate(-12,28,12)'/%3E%3Cellipse cx='44' cy='20' rx='7' ry='4.5' transform='rotate(28,44,20)'/%3E%3Cellipse cx='45' cy='35' rx='7' ry='4.5' transform='rotate(-18,45,35)'/%3E%3Cellipse cx='29' cy='43' rx='9' ry='5.5' transform='rotate(12,29,43)'/%3E%3Cellipse cx='12' cy='35' rx='7' ry='4.5'/%3E%3Cellipse cx='80' cy='62' rx='9' ry='5.5' transform='rotate(-12,80,62)'/%3E%3Cellipse cx='96' cy='70' rx='7' ry='4.5' transform='rotate(28,96,70)'/%3E%3Cellipse cx='97' cy='85' rx='7' ry='4.5' transform='rotate(-18,97,85)'/%3E%3Cellipse cx='81' cy='93' rx='9' ry='5.5' transform='rotate(12,81,93)'/%3E%3Cellipse cx='64' cy='85' rx='7' ry='4.5'/%3E%3Cellipse cx='66' cy='10' rx='5' ry='3.5' transform='rotate(20,66,10)'/%3E%3Cellipse cx='10' cy='66' rx='5' ry='3.5'/%3E%3Cellipse cx='92' cy='30' rx='4.5' ry='3' transform='rotate(-25,92,30)'/%3E%3Cellipse cx='46' cy='62' rx='5.5' ry='3.5'/%3E%3Cellipse cx='18' cy='90' rx='4.5' ry='3' transform='rotate(15,18,90)'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:110px 110px;
+  -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.9),rgba(0,0,0,.25) 40%,rgba(0,0,0,.55));
+          mask-image:linear-gradient(180deg,rgba(0,0,0,.9),rgba(0,0,0,.25) 40%,rgba(0,0,0,.55));
+}
+/* glitter layers (twinkle) */
+.glit,.glit2{position:absolute;inset:0;z-index:0;pointer-events:none}
+.glit{
+  background-image:
+    radial-gradient(rgba(255,255,255,.95) 1px,transparent 1.6px),
+    radial-gradient(rgba(255,160,210,.9) 1px,transparent 1.6px);
+  background-size:46px 46px,67px 67px;
+  background-position:0 0,23px 31px;
+  animation:tw 2.8s ease-in-out infinite alternate;
+}
+.glit2{
+  background-image:
+    radial-gradient(rgba(255,255,255,.8) .8px,transparent 1.3px),
+    radial-gradient(rgba(246,215,122,.85) 1px,transparent 1.5px);
+  background-size:29px 29px,83px 83px;
+  background-position:12px 6px,40px 60px;
+  animation:tw 3.7s ease-in-out infinite alternate-reverse;
+}
+@keyframes tw{from{opacity:.18}to{opacity:.6}}
+
+/* big star sparkles (animated) */
+.spark{position:absolute;z-index:1;pointer-events:none;animation:sparkle 2.6s ease-in-out infinite}
+.spark svg{display:block;filter:drop-shadow(0 0 6px #fff)}
+@keyframes sparkle{0%,100%{transform:scale(.5);opacity:.15}50%{transform:scale(1);opacity:.95}}
+
+.inner{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;overflow:hidden}
+.sbar{display:flex;justify-content:space-between;padding:14px 22px 4px;font-size:12px;font-weight:700;color:#FFD2E9}
+.pad{flex:1;overflow:hidden;padding:8px 15px 14px;display:flex;flex-direction:column;gap:11px}
+
+/* ---------- glass card（ちゅるん本気版） ---------- */
+.glass{
+  position:relative;border-radius:22px;padding:14px;
+  background:
+    linear-gradient(170deg, rgba(255,225,240,.46) 0%, rgba(255,170,212,.26) 38%, rgba(255,130,190,.16) 100%);
+  border:1.5px solid var(--glassEdge);
+  -webkit-backdrop-filter:blur(10px) saturate(1.35);
+          backdrop-filter:blur(10px) saturate(1.35);
+  box-shadow:
+    inset 0 2px 1px rgba(255,255,255,.95),      /* 上端の鋭いスペキュラ */
+    inset 0 14px 22px -12px rgba(255,255,255,.65),
+    inset 0 -10px 18px -10px rgba(150,0,80,.5), /* 下端のガラスの厚み */
+    0 4px 8px rgba(60,0,32,.45),
+    0 16px 34px -10px rgba(150,0,80,.55),
+    0 0 22px rgba(255,26,140,.22);
+  color:var(--inkcard);
+}
+/* 上半分の映り込み（楕円ハイライト） */
+.glass::before{
+  content:"";position:absolute;left:5%;right:5%;top:2px;height:46%;
+  border-radius:18px 18px 50% 50%/18px 18px 100% 100%;
+  background:linear-gradient(180deg,rgba(255,255,255,.6),rgba(255,255,255,0));
+  pointer-events:none;
+}
+/* ラインストーン縁（dot border） */
+.gem-border{position:relative}
+.gem-border::after{
+  content:"";position:absolute;inset:-4px;border-radius:26px;pointer-events:none;
+  background-image:
+    radial-gradient(circle, #fff 0 1.4px, rgba(255,200,230,.95) 1.8px, transparent 2.6px);
+  background-size:10px 10px;
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  padding:4px;
+  filter:drop-shadow(0 0 3px rgba(255,255,255,.8));
+}
+
+/* ---------- typography ---------- */
+.kicker{font-family:'Hachi Maru Pop';font-size:12px;color:#FFB7DB;text-align:center;letter-spacing:1px;text-shadow:0 0 10px rgba(255,26,140,.7)}
+.logo{
+  font-family:'Black Han Sans';text-align:center;font-size:54px;line-height:1.02;letter-spacing:-1px;
+  background:linear-gradient(180deg,#FFFFFF 8%,#FFD3EA 38%,#FF5CB0 52%,#FF1A8C 70%,#C4006B 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  filter:
+    drop-shadow(0 1px 0 rgba(255,255,255,.85))
+    drop-shadow(0 3px 0 #7A0040)
+    drop-shadow(0 5px 1px #45001f)
+    drop-shadow(0 0 18px rgba(255,26,140,.85));
+}
+.logo-sub{
+  font-family:'Hachi Maru Pop';text-align:center;font-size:21px;margin-top:2px;
+  background:linear-gradient(180deg,#fff 20%,#E9D5FF 45%,#B9B3C9 55%,#fff 80%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 2px 0 rgba(90,0,50,.7)) drop-shadow(0 0 10px rgba(255,255,255,.55));
+}
+.h1{font-family:'Jua';font-size:19px;color:#fff;text-shadow:0 0 12px rgba(255,26,140,.8),0 2px 0 rgba(90,0,50,.8)}
+.h1 small{display:block;font-family:'Hachi Maru Pop';font-size:11px;color:var(--gold);text-shadow:0 0 8px rgba(246,215,122,.8);margin-top:2px}
+
+/* ---------- menu tiles ---------- */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.tile{display:flex;flex-direction:column;align-items:center;gap:7px;padding:14px 8px 12px;cursor:pointer;transition:transform .16s}
+.tile:hover{transform:translateY(-3px) rotate(-1deg)}
+.tile .t-ko{font-family:'Jua';font-size:15px;color:var(--inkcard)}
+.tile .t-ja{font-family:'Mochiy Pop P One';font-size:9px;color:var(--inksub)}
+.tile.wide{flex-direction:row;justify-content:flex-start;gap:13px;padding:13px 16px}
+.tile.wide .t-wrap{display:flex;flex-direction:column;gap:2px}
+.gem-ico{width:46px;height:46px;filter:drop-shadow(0 4px 6px rgba(120,0,60,.55)) drop-shadow(0 0 8px rgba(255,255,255,.35))}
+.tile.wide .gem-ico{width:42px;height:42px}
+
+/* ---------- bottom nav ---------- */
+.nav{
+  display:flex;justify-content:space-around;padding:10px 6px 16px;position:relative;z-index:2;
+  background:linear-gradient(0deg,rgba(18,0,9,.92),rgba(50,2,28,.55));
+  border-top:1.5px solid rgba(255,90,170,.4);
+  box-shadow:0 -6px 18px rgba(0,0,0,.4);
+}
+.nav .ni{display:flex;flex-direction:column;align-items:center;gap:3px;font-family:'Jua';font-size:9.5px;color:#C26B99}
+.nav .ni svg{width:21px;height:21px;stroke:#C26B99;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav .ni.on{color:#fff;text-shadow:0 0 8px var(--hot)}
+.nav .ni.on svg{stroke:#fff;filter:drop-shadow(0 0 7px var(--hot))}
+
+/* ---------- buttons ---------- */
+.btn{
+  position:relative;display:flex;align-items:center;justify-content:center;gap:7px;
+  border:none;cursor:pointer;border-radius:999px;padding:13px 18px;
+  font-family:'Jua';font-size:15px;color:#fff;overflow:hidden;
+  background:linear-gradient(180deg,#FF7ABF 0%,var(--hot) 48%,#D40070 100%);
+  box-shadow:
+    inset 0 2px 1px rgba(255,255,255,.85),
+    inset 0 -3px 5px rgba(120,0,60,.6),
+    0 7px 16px -4px rgba(255,26,140,.7),
+    0 0 18px rgba(255,26,140,.4);
+  text-shadow:0 1px 2px rgba(120,0,60,.5);
+}
+.btn::before{content:"";position:absolute;left:8%;right:8%;top:2px;height:42%;border-radius:99px;background:linear-gradient(180deg,rgba(255,255,255,.75),transparent);pointer-events:none}
+.btn.ghost{
+  background:linear-gradient(170deg,rgba(255,225,240,.4),rgba(255,150,200,.18));
+  border:1.5px solid var(--glassEdge);color:var(--inkcard);text-shadow:none;
+  box-shadow:inset 0 2px 1px rgba(255,255,255,.9),0 5px 12px rgba(60,0,32,.4);
+}
+
+/* ---------- pills/badges ---------- */
+.pill{display:inline-flex;align-items:center;gap:4px;font-family:'Mochiy Pop P One';font-size:9px;border-radius:99px;padding:3px 9px}
+.pill.lv1{background:rgba(255,255,255,.78);color:var(--hot)}
+.pill.lv2{background:linear-gradient(135deg,var(--gold),#fff0c0);color:#7a5500}
+.pill.cat{background:rgba(255,255,255,.85);color:var(--hot);font-size:10px;padding:5px 12px;box-shadow:0 3px 8px rgba(120,0,60,.35)}
+.pill.cat.off{background:rgba(255,255,255,.2);color:#FFC9E4;box-shadow:none}
+
+/* ---------- score gauge ---------- */
+.gauge{position:relative;width:148px;height:148px;margin:0 auto}
+.gauge svg{width:100%;height:100%;transform:rotate(-90deg)}
+.gauge .num{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:'Black Han Sans';font-size:44px;color:#fff;line-height:1;
+  text-shadow:0 0 14px var(--hot),0 0 30px rgba(255,26,140,.7);
+}
+.gauge .num small{font-family:'Jua';font-size:13px;color:#FFC9E4;margin-top:2px;text-shadow:none}
+.verdict{font-family:'Black Han Sans';text-align:center;font-size:23px;color:var(--gold);text-shadow:0 0 14px rgba(246,215,122,.9),0 2px 0 rgba(90,40,0,.6)}
+
+/* purikura stamp */
+.stamp{
+  position:absolute;z-index:6;font-family:'Hachi Maru Pop';font-size:25px;color:#fff;pointer-events:none;
+  -webkit-text-stroke:5px var(--hot);paint-order:stroke;
+  text-shadow:0 0 12px var(--hot),0 0 26px rgba(255,26,140,.8);
+  transform:rotate(-12deg);
+  animation:stampin .55s cubic-bezier(.18,1.5,.4,1) both;
+}
+@keyframes stampin{from{transform:rotate(-12deg) scale(0)}to{transform:rotate(-12deg) scale(1)}}
+
+/* rec button */
+.rec{
+  position:relative;width:78px;height:78px;border-radius:50%;border:none;cursor:pointer;margin:0 auto;
+  background:radial-gradient(circle at 32% 26%,#FFB1D8,#FF1A8C 58%,#A8005C);
+  box-shadow:
+    inset 0 3px 3px rgba(255,255,255,.85),
+    inset 0 -5px 8px rgba(110,0,55,.7),
+    0 10px 24px -6px rgba(255,26,140,.85),
+    0 0 0 7px rgba(255,26,140,.18),
+    0 0 0 14px rgba(255,26,140,.08);
+  display:grid;place-items:center;
+}
+.rec svg{width:30px;height:30px;fill:#fff;filter:drop-shadow(0 1px 2px rgba(120,0,60,.6))}
+
+/* phrase rows */
+.prow{display:flex;align-items:center;gap:10px;padding:12px 13px}
+.prow .pko{font-family:'Jua';font-size:16px;color:var(--inkcard)}
+.prow .pja{font-family:'Mochiy Pop P One';font-size:9px;color:var(--inksub);margin-top:2px}
+.prow .chev{margin-left:auto;font-size:16px;color:var(--inksub)}
+
+/* chat */
+.chat-top{display:flex;align-items:center;gap:9px;padding:11px 14px;position:relative;z-index:2;
+  background:linear-gradient(170deg,rgba(255,225,240,.4),rgba(255,140,195,.2));
+  border-bottom:1.5px solid var(--glassEdge);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);}
+.chat-top .cav{width:34px;height:34px;border-radius:50%;flex:0 0 auto;
+  background:radial-gradient(circle at 34% 28%,#FFB1D8,#FF1A8C 70%);
+  box-shadow:inset 0 2px 2px rgba(255,255,255,.8),0 0 10px rgba(255,26,140,.6);
+  display:grid;place-items:center}
+.chat-top .cav svg{width:18px;height:18px}
+.chat-top .cname{font-family:'Jua';font-size:14px;color:#fff;text-shadow:0 0 8px rgba(255,26,140,.8)}
+.chat-top .cname small{display:block;font-family:'Hachi Maru Pop';font-size:9px;color:var(--gold)}
+.chat-top .ctimer{margin-left:auto;font-family:'Black Han Sans';font-size:16px;color:#7DF9FF;text-shadow:0 0 10px rgba(125,249,255,.9)}
+.bubs{flex:1;padding:12px;display:flex;flex-direction:column;gap:9px;overflow:hidden}
+.brow{display:flex;gap:7px}.brow.me{justify-content:flex-end}
+.bub{max-width:76%;padding:9px 12px;border-radius:16px;font-size:12px;line-height:1.45}
+.bub .bko{font-family:'Jua';font-size:13.5px}
+.bub .bja{font-size:9px;margin-top:3px;opacity:.78}
+.bub.ai{
+  color:var(--inkcard);border-top-left-radius:5px;
+  background:linear-gradient(170deg,rgba(255,235,246,.92),rgba(255,200,228,.78));
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:inset 0 1.5px 1px rgba(255,255,255,.95),0 4px 10px rgba(60,0,32,.4);
+}
+.bub.me{
+  color:#fff;border-top-right-radius:5px;
+  background:linear-gradient(180deg,#FF7ABF,var(--hot) 60%,#D40070);
+  box-shadow:inset 0 1.5px 1px rgba(255,255,255,.6),0 4px 12px rgba(255,26,140,.55);
+  text-shadow:0 1px 1px rgba(120,0,60,.4);
+}
+.sug-label{font-family:'Hachi Maru Pop';font-size:10px;color:var(--gold);text-shadow:0 0 8px rgba(246,215,122,.8);margin:2px 2px 0}
+.sug{display:flex;flex-direction:column;gap:6px}
+.sug .schip{
+  display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:13px;cursor:pointer;
+  background:linear-gradient(170deg,rgba(255,235,246,.9),rgba(255,205,230,.7));
+  border:1.5px solid rgba(255,255,255,.95);
+  box-shadow:inset 0 1.5px 1px #fff,0 4px 9px rgba(60,0,32,.4);
+  transition:transform .14s;
+}
+.schip:hover{transform:translateY(-2px)}
+.schip .sko{font-family:'Jua';font-size:13px;color:var(--inkcard)}
+.schip .sja{font-family:'Mochiy Pop P One';font-size:8.5px;color:var(--inksub)}
+</style>
+</head>
+<body>
+
+<!-- ===== SVG GEM LIBRARY（全アイコンをシンボル化・画像不使用） ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="gFacet" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#FF8AC8"/><stop offset="1" stop-color="#C4006B"/>
+  </linearGradient>
+  <linearGradient id="gFacet2" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#FFE3F2"/><stop offset=".5" stop-color="#FF5CB0"/><stop offset="1" stop-color="#A8005C"/>
+  </linearGradient>
+  <linearGradient id="gGold" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#FFEFAE"/><stop offset=".5" stop-color="#F6D77A"/><stop offset="1" stop-color="#C39127"/>
+  </linearGradient>
+  <radialGradient id="gOrb" cx="33%" cy="27%" r="72%">
+    <stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#FF8AC8"/><stop offset="1" stop-color="#B80062"/>
+  </radialGradient>
+
+  <!-- crystal heart -->
+  <symbol id="iHeart" viewBox="0 0 64 60">
+    <path d="M32,55 C16,46 4,35 4,21 C4,11 11,5 19,5 C24,5 29,8 32,14 C35,8 40,5 45,5 C53,5 60,11 60,21 C60,35 48,46 32,55Z" fill="url(#gFacet)" stroke="#fff" stroke-width="2"/>
+    <path d="M32,14 L18,24 L32,40 L46,24Z" fill="#fff" opacity=".35"/>
+    <path d="M32,14 L32,55 L4,21Z" fill="#fff" opacity=".14"/>
+    <path d="M46,24 L32,40 L40,48Z" fill="#7A0040" opacity=".22"/>
+    <ellipse cx="21" cy="15" rx="6" ry="3" fill="#fff" opacity=".9" transform="rotate(-28,21,15)"/>
+  </symbol>
+
+  <!-- diamond -->
+  <symbol id="iDia" viewBox="0 0 64 60">
+    <polygon points="32,6 56,24 32,56 8,24" fill="url(#gFacet2)" stroke="#fff" stroke-width="2"/>
+    <polygon points="32,6 56,24 44,24 32,18" fill="#fff" opacity=".45"/>
+    <polygon points="32,6 8,24 20,24 32,18" fill="#fff" opacity=".25"/>
+    <polygon points="20,24 32,18 44,24 32,56" fill="#7A0040" opacity=".18"/>
+    <line x1="20" y1="24" x2="44" y2="24" stroke="#fff" stroke-width="1.4" opacity=".7"/>
+    <circle cx="24" cy="13" r="2" fill="#fff" opacity=".95"/>
+  </symbol>
+
+  <!-- ribbon bow -->
+  <symbol id="iBow" viewBox="0 0 64 60">
+    <path d="M30,30 C14,14 2,24 8,34 C12,42 24,38 30,32Z" fill="url(#gFacet)" stroke="#fff" stroke-width="1.8"/>
+    <path d="M34,30 C50,14 62,24 56,34 C52,42 40,38 34,32Z" fill="url(#gFacet)" stroke="#fff" stroke-width="1.8"/>
+    <path d="M27,35 L22,52 L30,48Z" fill="url(#gFacet2)" stroke="#fff" stroke-width="1.5"/>
+    <path d="M37,35 L42,52 L34,48Z" fill="url(#gFacet2)" stroke="#fff" stroke-width="1.5"/>
+    <circle cx="32" cy="31" r="7" fill="url(#gOrb)" stroke="#fff" stroke-width="1.8"/>
+    <ellipse cx="14" cy="24" rx="5" ry="2.5" fill="#fff" opacity=".75" transform="rotate(-22,14,24)"/>
+  </symbol>
+
+  <!-- headphone heart -->
+  <symbol id="iHead" viewBox="0 0 64 60">
+    <path d="M12,34 a20,20 0 0 1 40,0" fill="none" stroke="url(#gGold)" stroke-width="5" stroke-linecap="round"/>
+    <path d="M14,32 a4,5 0 0 1 8,0 q0,5 -4,7 q-4,-2 -4,-7Z" fill="url(#gFacet)" stroke="#fff" stroke-width="1.6" transform="translate(0,4)"/>
+    <path d="M42,32 a4,5 0 0 1 8,0 q0,5 -4,7 q-4,-2 -4,-7Z" fill="url(#gFacet)" stroke="#fff" stroke-width="1.6" transform="translate(0,4)"/>
+    <path d="M32,52 C24,47 19,42 19,35 C19,30 22,27 26,27 C28.5,27 30.8,28.4 32,31 C33.2,28.4 35.5,27 38,27 C42,27 45,30 45,35 C45,42 40,47 32,52Z" fill="url(#gOrb)" stroke="#fff" stroke-width="2"/>
+    <ellipse cx="27" cy="33" rx="3.5" ry="2" fill="#fff" opacity=".85" transform="rotate(-25,27,33)"/>
+  </symbol>
+
+  <!-- speech bubble + puzzle -->
+  <symbol id="iPuz" viewBox="0 0 64 60">
+    <path d="M8,10 h48 a4,4 0 0 1 4,4 v26 a4,4 0 0 1 -4,4 h-26 l-10,10 v-10 h-12 a4,4 0 0 1 -4,-4 v-26 a4,4 0 0 1 4,-4Z" fill="url(#gFacet)" stroke="#fff" stroke-width="2" transform="translate(-2,0)"/>
+    <path d="M26,18 h5 a4,4 0 0 1 8,0 h5 v5 a4,4 0 0 1 0,8 v5 h-18 v-5 a4,4 0 0 1 0,-8Z" fill="#fff" opacity=".9" transform="translate(-2,0)"/>
+    <ellipse cx="16" cy="15" rx="6" ry="2.5" fill="#fff" opacity=".7" transform="rotate(-15,16,15)"/>
+  </symbol>
+
+  <!-- crown -->
+  <symbol id="iCrown" viewBox="0 0 64 60">
+    <path d="M8,44 L12,20 L24,32 L32,12 L40,32 L52,20 L56,44Z" fill="url(#gGold)" stroke="#fff" stroke-width="1.8"/>
+    <rect x="8" y="43" width="48" height="9" rx="3.5" fill="url(#gGold)" stroke="#fff" stroke-width="1.5"/>
+    <circle cx="16" cy="47" r="2.6" fill="url(#gOrb)"/><circle cx="32" cy="47" r="2.6" fill="url(#gOrb)"/><circle cx="48" cy="47" r="2.6" fill="url(#gOrb)"/>
+    <circle cx="12" cy="18" r="3.2" fill="url(#gOrb)" stroke="#fff"/><circle cx="32" cy="10" r="3.6" fill="url(#gOrb)" stroke="#fff"/><circle cx="52" cy="18" r="3.2" fill="url(#gOrb)" stroke="#fff"/>
+    <path d="M8,44 L12,20 L24,32 L32,12 L40,32 L52,20 L56,44Z" fill="#fff" opacity=".18"/>
+  </symbol>
+
+  <!-- 4-point star -->
+  <symbol id="iStar" viewBox="-10 -10 20 20">
+    <path d="M0,-9 L2,-2 L9,0 L2,2 L0,9 L-2,2 L-9,0 L-2,-2Z" fill="#fff"/>
+  </symbol>
+
+  <!-- nav icons (line) -->
+  <symbol id="nHome" viewBox="0 0 24 24"><path d="M4,11 L12,4 L20,11 V20 H14 V14 H10 V20 H4Z"/></symbol>
+  <symbol id="nChart" viewBox="0 0 24 24"><path d="M5,20 V12 M12,20 V6 M19,20 V10"/></symbol>
+  <symbol id="nGear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12,3 v3 M12,18 v3 M3,12 h3 M18,12 h3 M5.6,5.6 l2.1,2.1 M16.3,16.3 l2.1,2.1 M18.4,5.6 l-2.1,2.1 M7.7,16.3 l-2.1,2.1"/></symbol>
+  <symbol id="nMic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3" fill="#fff" stroke="none"/><path d="M5,11 a7,7 0 0 0 14,0 M12,18 v3" fill="none"/></symbol>
+</defs>
+</svg>
+
+<!-- ============ ① HOME ============ -->
+<div class="shot">
+  <div class="phone"><div class="screen">
+    <div class="leo"></div><div class="glit"></div><div class="glit2"></div>
+    <span class="spark" style="top:84px;left:22px;width:16px;animation-delay:.3s"><svg viewBox="-10 -10 20 20"><use href="#iStar"/></svg></span>
+    <span class="spark" style="top:64px;right:26px;width:12px;animation-delay:1.4s"><svg viewBox="-10 -10 20 20"><use href="#iStar"/></svg></span>
+    <span class="spark" style="top:190px;right:14px;width:10px;animation-delay:.9s"><svg viewBox="-10 -10 20 20"><use href="#iStar"/></svg></span>
+    <div class="inner">
+      <div class="sbar"><span>9:41</span><span>▮▮▮ ⦿ ▣</span></div>
+      <div class="pad">
+        <div style="padding:8px 0 2px">
+          <div class="kicker">♡ 즐겁게 배우자! ♡</div>
+          <div class="logo">한국어</div>
+          <div class="logo-sub">Study ♡</div>
+        </div>
+
+        <div class="tiles">
+          <div class="glass gem-border tile">
+            <svg class="gem-ico"><use href="#iDia"/></svg>
+            <span class="t-ko">한글</span><span class="t-ja">ハングル学習</span>
+          </div>
+          <div class="glass gem-border tile">
+            <svg class="gem-ico"><use href="#iBow"/></svg>
+            <span class="t-ko">프레이즈</span><span class="t-ja">フレーズ音読</span>
+          </div>
+          <div class="glass gem-border tile">
+            <svg class="gem-ico"><use href="#iHead"/></svg>
+            <span class="t-ko">발음 체크</span><span class="t-ja">発音チェック</span>
+          </div>
+          <div class="glass gem-border tile">
+            <svg class="gem-ico"><use href="#iPuz"/></svg>
+            <span class="t-ko">문장 퍼즐</span><span class="t-ja">パズル学習</span>
+          </div>
+        </div>
+
+        <div class="glass gem-border tile wide">
+          <svg class="gem-ico"><use href="#iCrown"/></svg>
+          <div class="t-wrap">
+            <span class="t-ko">롤플레이</span>
+            <span class="t-ja">영통팬싸・カフェ・タクシーで会話練習</span>
+          </div>
+          <span style="margin-left:auto;color:var(--inksub);font-size:16px">›</span>
+        </div>
+      </div>
+      <div class="nav">
+        <div class="ni on"><svg><use href="#nHome"/></svg>홈</div>
+        <div class="ni"><svg><use href="#nChart"/></svg>진행</div>
+        <div class="ni"><svg><use href="#nGear"/></svg>설정</div>
+      </div>
+    </div>
+  </div></div>
+  <div class="shot-label">① ホーム<span>ロゴ・宝石アイコン・ガラスタイル 全てCSS/SVG</span></div>
+</div>
+
+<!-- ============ ② 発音チェック ============ -->
+<div class="shot">
+  <div class="phone"><div class="screen">
+    <div class="leo"></div><div class="glit"></div><div class="glit2"></div>
+    <span class="stamp" style="top:118px;right:18px">대박!</span>
+    <span class="spark" style="top:300px;left:18px;width:14px;animation-delay:.6s"><svg viewBox="-10 -10 20 20"><use href="#iStar"/></svg></span>
+    <div class="inner">
+      <div class="sbar"><span>9:41</span><span>▮▮▮ ⦿ ▣</span></div>
+      <div class="pad" style="gap:12px">
+        <div class="h1">발음 체크 <small>うまく言えたら 완벽!</small></div>
+
+        <div class="glass gem-border" style="text-align:center">
+          <div style="font-family:'Jua';font-size:25px;color:var(--inkcard)">오빠 <span style="color:#C4006B;text-decoration:underline wavy rgba(255,26,140,.6) 2px">사</span>랑해요!</div>
+          <div style="font-family:'Mochiy Pop P One';font-size:10px;color:var(--inksub);margin-top:4px">オッパ愛してる！ ・ oppa saranghaeyo</div>
+        </div>
+
+        <div style="display:flex;gap:9px">
+          <button class="btn ghost" style="flex:1;font-size:13px;padding:10px">🔊 聞く</button>
+          <button class="btn ghost" style="flex:1;font-size:13px;padding:10px">🐢 ゆっくり</button>
+        </div>
+
+        <div class="gauge">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="9"/>
+            <circle cx="50" cy="50" r="42" fill="none" stroke="url(#gFacet)" stroke-width="9" stroke-linecap="round"
+              stroke-dasharray="264" stroke-dashoffset="32"/>
+            <circle cx="50" cy="50" r="42" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"
+              stroke-dasharray="0 12" opacity=".9"/>
+          </svg>
+          <div class="num">88<small>点</small></div>
+        </div>
+        <div class="verdict">대박! 👑</div>
+
+        <div class="glass" style="font-size:11.5px;text-align:center;padding:11px">
+          「<b style="color:#C4006B">사</b>」がもう一歩♡ 口を横にひいてハキッと言ってみよ
+        </div>
+
+        <button class="rec"><svg viewBox="0 0 24 24"><use href="#nMic"/></svg></button>
+      </div>
+    </div>
+  </div></div>
+  <div class="shot-label">② 発音チェック<span>SVGゲージ・スタンプ・ちゅるんRECボタン</span></div>
+</div>
+
+<!-- ============ ③ フレーズ一覧 ============ -->
+<div class="shot">
+  <div class="phone"><div class="screen">
+    <div class="leo"></div><div class="glit"></div><div class="glit2"></div>
+    <div class="inner">
+      <div class="sbar"><span>9:41</span><span>▮▮▮ ⦿ ▣</span></div>
+      <div class="pad" style="gap:10px">
+        <div class="h1">프레이즈 <small>推しに届けたい一言を選ぼ♡</small></div>
+        <div style="display:flex;gap:6px;flex-wrap:nowrap;overflow:hidden">
+          <span class="pill cat">응원💖</span><span class="pill cat off">콘서트</span><span class="pill cat off">굿즈</span><span class="pill cat off">팬싸</span><span class="pill cat off">SNS</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;overflow:hidden">
+          <div class="glass prow"><div><div class="pko">사랑해요</div><div class="pja">愛してます</div></div><span class="pill lv1">Lv1 ✓</span><span class="chev">›</span></div>
+          <div class="glass prow"><div><div class="pko">너무 멋있어요</div><div class="pja">すごくかっこいい</div></div><span class="pill lv1">Lv1</span><span class="chev">›</span></div>
+          <div class="glass prow"><div><div class="pko">최고예요</div><div class="pja">最高です</div></div><span class="pill lv1">Lv1</span><span class="chev">›</span></div>
+          <div class="glass prow"><div><div class="pko">응원할게요</div><div class="pja">応援します</div></div><span class="pill lv2">Lv2</span><span class="chev">›</span></div>
+          <div class="glass prow"><div><div class="pko">보고 싶었어요</div><div class="pja">会いたかったです</div></div><span class="pill lv2">Lv2</span><span class="chev">›</span></div>
+        </div>
+      </div>
+      <div class="nav">
+        <div class="ni on"><svg><use href="#nHome"/></svg>홈</div>
+        <div class="ni"><svg><use href="#nChart"/></svg>진행</div>
+        <div class="ni"><svg><use href="#nGear"/></svg>설정</div>
+      </div>
+    </div>
+  </div></div>
+  <div class="shot-label">③ フレーズ一覧<span>カテゴリピル・ガラス行・Lvバッジ</span></div>
+</div>
+
+<!-- ============ ④ ロールプレイチャット ============ -->
+<div class="shot">
+  <div class="phone"><div class="screen">
+    <div class="leo"></div><div class="glit"></div><div class="glit2"></div>
+    <div class="inner">
+      <div class="sbar"><span>9:41</span><span>▮▮▮ ⦿ ▣</span></div>
+      <div class="chat-top">
+        <div class="cav"><svg viewBox="0 0 64 60"><use href="#iHeart"/></svg></div>
+        <div class="cname">최애 오빠<small>📹 영통팬싸 中…</small></div>
+        <div class="ctimer">0:42</div>
+      </div>
+      <div class="bubs">
+        <div class="brow"><div class="bub ai"><div class="bko">앗! 안녕하세요~ 이름이 뭐예요?</div><div class="bja">あっ！こんにちは〜お名前は？</div></div></div>
+        <div class="brow me"><div class="bub me"><div class="bko">타쿠야예요! 진짜 팬이에요 ㅠㅠ</div><div class="bja">タクヤです！ガチのファンです😭</div></div></div>
+        <div class="brow"><div class="bub ai"><div class="bko">헐 감동.. 일본에서 왔어요?</div><div class="bja">え、感動..日本から来たの？</div></div></div>
+      </div>
+      <div style="padding:0 12px 12px;display:flex;flex-direction:column;gap:6px">
+        <div class="sug-label">おすすめの返答 ♡</div>
+        <div class="sug">
+          <div class="schip"><div><div class="sko">네! 보고 싶었어요 ㅠㅠ</div><div class="sja">はい！会いたかった😭</div></div></div>
+          <div class="schip"><div><div class="sko">오빠 너무 멋있어요!</div><div class="sja">オッパかっこよすぎ！</div></div></div>
+          <div class="schip"><div><div class="sko">컴백 응원할게요!</div><div class="sja">カムバ応援してます！</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div></div>
+  <div class="shot-label">④ 영통팬싸チャット<span>タイマー・ガラス吹き出し・3択チップ</span></div>
+</div>
+
+</body>
+</html>
